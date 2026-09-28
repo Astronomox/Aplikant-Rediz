@@ -1,4 +1,4 @@
-import { type LucideIcon } from "lucide-react";
+import { ChartColumn, ClipboardCheck, Users, type LucideIcon } from "lucide-react";
 
 /*
  * Program lifecycle data for the hero visuals. Every label is taken from the
@@ -13,3 +13,29 @@ export interface Stage {
   tags: string[];
   ai?: boolean;
 }
+
+/** The three lifecycle stages the hero cycles through. */
+export const stages: Stage[] = [
+  {
+    step: "01",
+    label: "Apply",
+    icon: ClipboardCheck,
+    title: "Branded application link",
+    tags: ["Custom forms", "Scoring", "Shortlisting"],
+  },
+  {
+    step: "02",
+    label: "Track",
+    icon: Users,
+    title: "Attendance, manual + QR",
+    tags: ["Cohorts", "Engagement", "Demographics"],
+  },
+  {
+    step: "03",
+    label: "Report",
+    icon: ChartColumn,
+    title: "Donor-ready impact report",
+    tags: ["Completion rates", "Gender", "Geography", "Outcomes"],
+    ai: true,
+  },
+];
