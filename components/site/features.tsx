@@ -27,7 +27,7 @@ const ICONS: Record<FeatureKey, LucideIcon> = {
   access: ShieldCheck,
 };
 
-export function Features() {
+export function Features({ cell = "bg-cream" }: { cell?: string }) {
   return (
     <div className="grid gap-px border-t border-navy/10 bg-navy/10 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((f, i) => {
