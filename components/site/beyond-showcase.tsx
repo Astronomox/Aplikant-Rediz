@@ -196,7 +196,7 @@ function CertificateScene() {
             animate={{ y: 0, scale: 1, rotate: -12, opacity: 0.88 }}
             transition={{ ...SLAM, delay: STAMP_AT }}
           >
-            <span className="block border border-[#047857] px-2 py-0.5 text-[12px] font-extrabold tracking-[0.22em]">
+            <span className="block rounded-[3px] border border-[#047857] px-2 py-0.5 text-[12px] font-extrabold tracking-[0.22em]">
               CERTIFIED
             </span>
           </m.div>
