@@ -139,3 +139,26 @@ export const features: Feature[] = [
     ],
   },
 ];
+
+export const steps = [
+  {
+    n: "01",
+    title: "Create your program",
+    body: "Set up a training, bootcamp, fellowship, or workshop in minutes. Define dates, capacity, and application requirements.",
+  },
+  {
+    n: "02",
+    title: "Collect applications",
+    body: "Share a branded application link. Responses flow into your dashboard for review, scoring, and shortlisting.",
+  },
+  {
+    n: "03",
+    title: "Track & manage",
+    body: "Take attendance, monitor engagement, deploy surveys, and keep your team aligned with role-based access.",
+  },
+  {
+    n: "04",
+    title: "Report impact",
+    body: "Generate beautiful reports for funders and stakeholders with completion rates, demographics, outcomes, and more.",
+  },
+] as const;
