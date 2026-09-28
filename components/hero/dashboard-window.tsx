@@ -353,7 +353,9 @@ export function DashboardWindow() {
                     }}
                   />
                 </span>
-                <span className="w-9 text-right font-semibold tabular-nums">{p.progress}%</span>
+                <span className="w-9 text-right font-semibold tabular-nums">
+                  <Count to={p.progress} on={on} suffix="%" />
+                </span>
               </li>
             ))}
           </ul>
