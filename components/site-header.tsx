@@ -193,7 +193,7 @@ function MobileMenu({
               transition={{ ...t, delay: reduced ? 0 : 0.04 + i * 0.04 }}
               className="border-b border-white/10"
             >
-              <a
+              <Link
                 ref={i === 0 ? firstLink : undefined}
                 href={n.href}
                 aria-current={active === n.href ? "location" : undefined}
