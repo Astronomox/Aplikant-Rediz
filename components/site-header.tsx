@@ -65,7 +65,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
                 width={144}
                 height={72}
                 priority
-                className="-my-4 h-auto w-[118px]"
+                className="-my-4 h-auto w-[104px] sm:w-[118px]"
               />
             </a>
             <nav className="hidden items-center gap-1 text-sm md:flex" aria-label="Primary">
