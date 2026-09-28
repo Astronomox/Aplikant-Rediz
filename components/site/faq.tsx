@@ -70,24 +70,7 @@ export function Faq({ index, head = true }: { index?: string; head?: boolean }) 
           <Contact className="mt-6 sm:mt-10" />
         </Reveal>
       </div>
-      <ul>
-        {faqs.map((f, i) => (
-          <li key={f.q} className={i > 0 ? "border-t border-navy/10" : ""}>
-            <details className={`group ${PAD.x}`} open={i === 0}>
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-sm font-medium sm:gap-6 sm:py-6 sm:text-[15px] [&::-webkit-details-marker]:hidden">
-                {f.q}
-                <Plus
-                  className="h-4 w-4 shrink-0 text-navy/50 transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none"
-                  aria-hidden="true"
-                />
-              </summary>
-              <p className="max-w-xl pb-4 text-sm leading-relaxed text-navy/60 sm:pb-6 sm:text-[15px]">
-                {f.a}
-              </p>
-            </details>
-          </li>
-        ))}
-      </ul>
+      <List />
     </div>
   );
 }
