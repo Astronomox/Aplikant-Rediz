@@ -209,7 +209,7 @@ function MobileMenu({
           ))}
         </ul>
       </nav>
-      <div className="relative mt-auto space-y-2.5 px-5 pb-8 pt-8">
+      <div className="relative mt-auto space-y-2 px-5 pb-6 pt-6">
         <a
           href="#"
           onClick={() => {
