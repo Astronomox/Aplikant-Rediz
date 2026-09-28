@@ -49,7 +49,10 @@ export function Features({ cell = "bg-cream" }: { cell?: string }) {
               <p className={`mt-1 text-navy/60 ${TYPE.body}`}>{f.rest}</p>
               <ul className="mt-3 space-y-1 sm:mt-4 sm:space-y-1.5">
                 {f.cells.map((c) => (
-                  <li key={c.lead} className="flex items-start gap-2 text-[13px] text-navy/75">
+                  <li
+                    key={c.lead}
+                    className="flex items-start gap-2 text-xs text-navy/75 sm:text-[13px]"
+                  >
                     <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-mint" aria-hidden="true" />
                     {c.lead.replace(/\.$/, "")}
                   </li>
