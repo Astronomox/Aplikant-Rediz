@@ -49,10 +49,10 @@ export function Hero() {
           <h1 className={`mx-auto mt-5 max-w-3xl ${TYPE.display}`}>{hero.title}</h1>
           <p className={`mx-auto mt-4 max-w-xl ${TYPE.lede} text-navy/55`}>{hero.body}</p>
           <div className="mt-6 flex justify-center gap-2.5">
-            <a href="#pricing" className={BTN.secondary}>
+            <a href="/pricing" className={BTN.secondary}>
               View pricing
             </a>
-            <a href="#" className={BTN.primary}>
+            <a href="/sign-up" className={BTN.primary}>
               Start for free
             </a>
           </div>
