@@ -33,8 +33,8 @@ export function Features({ cell = "bg-cream" }: { cell?: string }) {
       {features.map((f, i) => {
         const Icon = ICONS[f.key];
         return (
-          <Reveal key={f.key} index={i % 3} className="bg-cream">
-            <article className="h-full px-5 py-7 sm:px-8 sm:py-9 lg:px-10">
+          <Reveal key={f.key} index={i % 3} className={cell}>
+            <article id={f.key} className="h-full scroll-mt-20 px-5 py-5 sm:px-8 sm:py-7 lg:px-10">
               <div className="flex items-center gap-2">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy text-gold">
                   <Icon className="h-4 w-4" aria-hidden="true" />
