@@ -52,7 +52,7 @@ const MARKS: Record<string, () => ReactElement> = {
 
 const CYCLE_MS = 6000;
 
-export function Testimonials() {
+export function Testimonials({ index }: { index?: string }) {
   const reduced = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
