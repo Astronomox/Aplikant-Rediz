@@ -67,12 +67,7 @@ export function Faq({ index, head = true }: { index?: string; head?: boolean }) 
             title="Frequently asked questions."
             lede="Everything you need to know about Aplikant."
           />
-          <div className="mt-6 flex items-center justify-between gap-4 rounded-xl border border-navy/10 bg-white/70 p-4 sm:mt-10 sm:block sm:p-5">
-            <p className="text-sm font-medium sm:text-[15px]">Still have questions?</p>
-            <a href="#" className={`${BTN.secondary} shrink-0 sm:mt-4`}>
-              Get in touch
-            </a>
-          </div>
+          <Contact className="mt-6 sm:mt-10" />
         </Reveal>
       </div>
       <ul>
