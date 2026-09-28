@@ -39,7 +39,7 @@ export function Hero() {
         {/* Copy */}
         <div className="px-5 pb-10 pt-10 text-center sm:pb-12 sm:pt-16 lg:px-8 lg:pb-14 lg:pt-20">
           <a
-            href="#features"
+            href="/features"
             className="group inline-flex items-center gap-1 rounded-full border border-navy/10 bg-white/70 py-1 pl-1 pr-2.5 text-xs font-medium text-navy/75 shadow-sm"
           >
             <Pill>New</Pill>
