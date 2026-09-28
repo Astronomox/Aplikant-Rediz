@@ -335,7 +335,7 @@ export function DashboardWindow() {
             <p className="text-[10px] font-medium text-navy/45">View all</p>
           </div>
           <ul className="mt-3 space-y-3">
-            {PROGRAMS.map((p) => (
+            {PROGRAMS.map((p, i) => (
               <li key={p.name} className="flex items-center gap-3 text-[11px]">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-navy text-gold">
                   <FolderKanban className="h-3.5 w-3.5" aria-hidden="true" />
@@ -343,6 +343,15 @@ export function DashboardWindow() {
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-semibold">{p.name}</span>
                   <span className="text-[10px] text-navy/50">{p.type}</span>
+                </span>
+                <span className="relative hidden h-2 w-40 overflow-hidden rounded-full bg-navy/[0.07] sm:block">
+                  <span
+                    className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-gold to-mint ${ease}`}
+                    style={{
+                      width: on ? `${String(p.progress)}%` : "0%",
+                      transitionDelay: `${String(500 + i * 150)}ms`,
+                    }}
+                  />
                 </span>
                 <span className="w-9 text-right font-semibold tabular-nums">{p.progress}%</span>
               </li>
