@@ -159,3 +159,8 @@ body {
     opacity: 0;
   }
 }
+@keyframes fx-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
