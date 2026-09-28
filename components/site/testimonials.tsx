@@ -86,11 +86,11 @@ export function Testimonials() {
 
   return (
     <div ref={ref}>
-      <div className="relative px-5 py-20 text-center sm:py-28">
+      <div className="relative px-5 py-12 text-center sm:py-20 lg:py-24">
         <DotGrid id="quote-grid" tone="light" fade="radial" />
         <Pill>Testimonials</Pill>
         <p className="mt-3 text-sm text-navy/50">Loved by program managers</p>
-        <div className="relative mx-auto mt-8 grid max-w-3xl">
+        <div className="relative mx-auto mt-6 grid max-w-3xl sm:mt-8">
           <AnimatePresence initial={false}>
             <m.figure
               key={t.name}
@@ -100,10 +100,10 @@ export function Testimonials() {
               exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
               transition={tr}
             >
-              <blockquote className="font-serif text-[1.75rem] leading-[1.2] tracking-[-0.01em] text-navy sm:text-4xl lg:text-[2.75rem]">
+              <blockquote className="font-serif text-xl leading-[1.3] tracking-[-0.01em] text-navy sm:text-3xl sm:leading-[1.2] lg:text-[2.5rem]">
                 “{t.quote} <span className="text-navy/40">{t.rest}”</span>
               </blockquote>
-              <figcaption className="mt-8 text-sm">
+              <figcaption className="mt-5 text-[13px] sm:mt-8 sm:text-sm">
                 <span className="block font-medium text-navy">{t.name}</span>
                 <span className="block text-navy/50">
                   {t.role} · {t.org}
@@ -116,7 +116,7 @@ export function Testimonials() {
 
       {/* Organisation tabs */}
       <div
-        className="grid border-t border-navy/10 sm:grid-cols-3"
+        className="grid grid-cols-3 border-t border-navy/10"
         role="tablist"
         aria-label="Testimonials"
       >
@@ -132,12 +132,16 @@ export function Testimonials() {
               onClick={() => {
                 setActive(i);
               }}
-              className={`relative flex h-16 items-center justify-center gap-2.5 text-sm font-semibold tracking-tight transition-colors ${
-                i > 0 ? "border-t border-navy/10 sm:border-l sm:border-t-0" : ""
+              className={`relative flex h-12 items-center justify-center gap-2 px-2 text-xs font-semibold tracking-tight transition-colors sm:h-16 sm:gap-2.5 sm:text-sm ${
+                i > 0 ? "border-l border-navy/10" : ""
               } ${on ? "bg-white text-navy" : "text-navy/40 hover:text-navy/70"}`}
             >
-              <Mark />
-              {q.org}
+              <span className="hidden sm:inline-flex">
+                <Mark />
+              </span>
+              {/* Phones: the city only, so all three fit on one row */}
+              <span className="sm:hidden">{q.org.split(" ")[0]}</span>
+              <span className="hidden sm:inline">{q.org}</span>
               {on && (
                 <m.span
                   key={`bar-${String(active)}-${String(visible)}`}

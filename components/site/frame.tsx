@@ -54,38 +54,56 @@ export function Pill({ children, tone = "light" }: { children: ReactNode; tone?:
   );
 }
 
-/**
- * Two-tone copy: a strong lead sentence, then a muted continuation in the same line.
- * Used for headings and for panel copy alike.
+/*
+ * Type system. One scale for the whole page, phone-first:
+ *   display  hero + band headlines   30 / 48 / 56 px
+ *   h2       section headings        22 / 30 / 36 px
+ *   h3       card titles             15 px
+ *   lede     text under a heading    14 / 16 px
+ *   body     card copy               14 px
+ *   label    eyebrows, pills         12 px
+ * Headings stay short; supporting copy is always a separate, body-sized paragraph.
  */
-export function TwoTone({
-  lead,
-  rest,
+export const TYPE = {
+  display:
+    "text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-[3.5rem]",
+  h2: "text-[1.375rem] font-medium leading-[1.2] tracking-[-0.02em] sm:text-3xl lg:text-[2.25rem] lg:leading-[1.15]",
+  h3: "text-[15px] font-semibold leading-snug",
+  lede: "text-sm leading-relaxed sm:text-base",
+  body: "text-sm leading-relaxed",
+} as const;
+
+/** Section spacing, phone-first. */
+export const PAD = {
+  x: "px-5 sm:px-8 lg:px-12",
+  y: "py-12 sm:py-16 lg:py-20",
+} as const;
+
+/** Eyebrow + short heading + lede: the head of every section. */
+export function SectionHead({
+  eyebrow,
+  title,
+  lede,
   tone = "light",
-  as: Tag = "h2",
+  center = false,
   className = "",
 }: {
-  lead: string;
-  rest?: string;
+  eyebrow: string;
+  title: string;
+  lede?: string;
   tone?: Tone;
-  as?: "h1" | "h2" | "h3" | "p";
+  center?: boolean;
   className?: string;
 }) {
+  const muted = tone === "dark" ? "text-white/55" : "text-navy/55";
   return (
-    <Tag className={`font-medium tracking-[-0.02em] ${className}`}>
-      {lead}
-      {rest && (
-        <>
-          {" "}
-          <span className={tone === "dark" ? "text-white/45" : "text-navy/45"}>{rest}</span>
-        </>
-      )}
-    </Tag>
+    <div className={`${center ? "mx-auto text-center" : ""} max-w-2xl ${className}`}>
+      <Pill tone={tone}>{eyebrow}</Pill>
+      <h2 className={`mt-4 ${TYPE.h2}`}>{title}</h2>
+      {lede && <p className={`mt-3 ${TYPE.lede} ${muted}`}>{lede}</p>}
+    </div>
   );
 }
-
-/** Section-heading scale shared by every section. */
-export const H2 = "text-[1.75rem] leading-[1.12] sm:text-4xl lg:text-[2.625rem]";
 
 /** Attio-sized action buttons: compact, 36-40px tall, square corners by design. */
 export const BTN = {

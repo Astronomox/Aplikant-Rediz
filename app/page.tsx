@@ -4,9 +4,9 @@ import { Announcement } from "@/components/site/announcement";
 import { nav } from "@/components/site/content";
 import { DarkBand } from "@/components/site/dark-band";
 import { Faq } from "@/components/site/faq";
-import { H2, Pill, Section, TwoTone } from "@/components/site/frame";
+import { Features } from "@/components/site/features";
+import { PAD, Section, SectionHead } from "@/components/site/frame";
 import { Hero } from "@/components/site/hero";
-import { PlatformPanels } from "@/components/site/platform";
 import { Pricing } from "@/components/site/pricing";
 import { Scale } from "@/components/site/scale";
 import { Testimonials } from "@/components/site/testimonials";
@@ -27,17 +27,14 @@ export default function Home() {
       <Hero />
 
       <Section id="features">
-        <Reveal className="px-5 py-16 sm:px-10 lg:px-12 lg:py-24">
-          <Pill>Platform</Pill>
-          <TwoTone
-            lead="Everything you need to run programs."
-            rest="From applications to impact reports, Aplikant covers the full program lifecycle."
-            className={`mt-5 max-w-4xl ${H2}`}
+        <Reveal className={`${PAD.x} ${PAD.y}`}>
+          <SectionHead
+            eyebrow="Platform"
+            title="Everything you need to run programs."
+            lede="From applications to impact reports, Aplikant covers the full program lifecycle."
           />
         </Reveal>
-        <div className="border-t border-navy/10">
-          <PlatformPanels />
-        </div>
+        <Features />
       </Section>
 
       <DarkBand />

@@ -4,7 +4,7 @@ import { Aurora } from "@/components/fx/aurora";
 import { PlayWhenVisible } from "@/components/fx/play-when-visible";
 import { Reveal } from "@/components/motion/reveal";
 import { footer } from "@/components/site/content";
-import { BTN, COLUMN, TickStrip, TwoTone } from "@/components/site/frame";
+import { BTN, COLUMN, PAD, TickStrip, TYPE } from "@/components/site/frame";
 import { DotGrid } from "@/components/texture/dot-grid";
 
 /*
@@ -23,20 +23,21 @@ export function SiteFooter() {
             <Aurora />
           </PlayWhenVisible>
           <TickStrip tone="dark" className="relative" />
-          <Reveal className="relative grid gap-8 px-5 py-14 sm:px-10 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-20">
+          <Reveal
+            className={`relative grid gap-6 ${PAD.x} ${PAD.y} lg:grid-cols-12 lg:items-center`}
+          >
             <div className="lg:col-span-7">
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-gold">
                 AI Powered Program Management
               </p>
-              <TwoTone
-                tone="dark"
-                lead="Ready to ditch the spreadsheets?"
-                rest="Join 150+ Innovation Hubs, NGOs and Government Agencies across Africa using Aplikant to manage programs, track impact, and delight their funders."
-                className="mt-4 text-[1.625rem] leading-[1.15] sm:text-3xl lg:text-[2.25rem]"
-              />
+              <h2 className={`mt-3 ${TYPE.h2}`}>Ready to ditch the spreadsheets?</h2>
+              <p className={`mt-3 max-w-xl ${TYPE.lede} text-white/55`}>
+                Join 150+ Innovation Hubs, NGOs and Government Agencies across Africa using Aplikant
+                to manage programs, track impact, and delight their funders.
+              </p>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <div className="flex flex-col gap-2.5 sm:flex-row lg:justify-end">
+              <div className="flex gap-2.5 lg:justify-end">
                 <a href="#" className={BTN.gold}>
                   Get Started for Free
                 </a>
@@ -52,7 +53,7 @@ export function SiteFooter() {
         </div>
 
         {/* Link columns */}
-        <div className="grid gap-10 px-5 py-14 sm:px-10 md:grid-cols-12 lg:px-12">
+        <div className={`grid gap-8 ${PAD.x} py-10 sm:py-14 md:grid-cols-12`}>
           <div className="md:col-span-5">
             <Image
               src="/logo-white.png"

@@ -5,7 +5,7 @@ import { CountUp } from "@/components/fx/count-up";
 import { Reveal } from "@/components/motion/reveal";
 import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
 import { stats } from "./content";
-import { H2, Pill, TwoTone } from "./frame";
+import { PAD, SectionHead } from "./frame";
 
 /*
  * "At any scale" (after Attio's "Run at any scale"): the four stats in a 2x2 with left
@@ -48,23 +48,22 @@ export function Scale() {
         />
       </svg>
 
-      <div className="relative px-5 pb-40 pt-16 sm:px-10 lg:px-12 lg:pb-48 lg:pt-24">
+      <div className={`relative ${PAD.x} pb-28 pt-12 sm:pb-36 sm:pt-16 lg:pb-44 lg:pt-20`}>
         <Reveal>
-          <Pill>At any scale</Pill>
-          <TwoTone
-            lead="Built for programs at any scale."
-            rest="From one bootcamp to a multi-program network."
-            className={`mt-5 max-w-md ${H2}`}
+          <SectionHead
+            eyebrow="At any scale"
+            title="Built for programs at any scale."
+            lede="From one bootcamp to a multi-program network."
           />
         </Reveal>
-        <dl className="mt-12 grid max-w-md grid-cols-2 gap-x-8 gap-y-8">
+        <dl className="mt-8 grid max-w-md grid-cols-2 gap-x-6 gap-y-6 sm:mt-12 sm:gap-x-8 sm:gap-y-8">
           {stats.map((s) => (
             <div key={s.label} className="border-l border-navy/25 pl-4">
               <dt className="sr-only">{s.label}</dt>
-              <dd className="text-3xl font-medium tracking-tight">
+              <dd className="text-2xl font-medium tracking-tight sm:text-3xl">
                 <CountUp value={s.value} />
               </dd>
-              <dd className="mt-1 text-sm text-navy/55">{s.label}</dd>
+              <dd className="mt-1 text-[13px] text-navy/55 sm:text-sm">{s.label}</dd>
             </div>
           ))}
         </dl>

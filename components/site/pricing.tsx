@@ -2,7 +2,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Disclosure } from "@/components/disclosure";
 import { Reveal } from "@/components/motion/reveal";
 import { plans, type Plan } from "./content";
-import { BTN, H2, Pill, TwoTone } from "./frame";
+import { BTN, PAD, SectionHead } from "./frame";
 
 /*
  * Pricing: the four real tiers as hairline cells (Attio's changelog-card construction),
@@ -14,7 +14,7 @@ function Ticks({ dark }: { dark: boolean }) {
   const c = dark ? "rgba(255,255,255,0.18)" : "rgba(15,23,42,0.14)";
   const hot = dark ? "rgba(245,158,11,0.9)" : "rgba(15,23,42,0.55)";
   return (
-    <div aria-hidden="true" className="relative mt-auto h-12 overflow-hidden">
+    <div aria-hidden="true" className="relative mt-auto h-6 overflow-hidden sm:h-12">
       <div
         className="absolute inset-x-0 bottom-0 h-5 transition-[height] duration-500 ease-out group-hover:h-12 motion-reduce:transition-none"
         style={{
@@ -42,7 +42,7 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
       } ${index > 1 ? "sm:border-t lg:border-t-0" : ""} ${index > 0 ? "lg:border-l" : ""} border-navy/10`}
     >
       {dark && <span aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-gold" />}
-      <Reveal index={index} className="flex flex-1 flex-col px-6 pb-4 pt-7">
+      <Reveal index={index} className="flex flex-1 flex-col px-5 pb-3 pt-5 sm:px-6 sm:pb-4 sm:pt-7">
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-[15px] font-medium">{p.tier}</h3>
           {p.badge && (
@@ -56,30 +56,34 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
           )}
         </div>
         <p
-          className={`mt-1.5 min-h-[2.75rem] text-sm leading-snug ${dark ? "text-white/55" : "text-navy/55"}`}
+          className={`mt-1 text-[13px] leading-snug sm:min-h-[2.75rem] sm:text-sm ${dark ? "text-white/55" : "text-navy/55"}`}
         >
           {p.blurb}
         </p>
 
-        <div className="mt-6 flex flex-wrap items-baseline gap-x-1.5">
+        <div className="mt-4 flex flex-wrap items-baseline gap-x-1.5 sm:mt-6">
           {p.prefix && (
             <span className={`text-sm ${dark ? "text-white/55" : "text-navy/55"}`}>{p.prefix}</span>
           )}
-          <span className="text-[2rem] font-medium leading-none tracking-tight">{p.price}</span>
+          <span className="text-2xl font-medium leading-none tracking-tight sm:text-[2rem]">
+            {p.price}
+          </span>
           <span className={`text-sm ${dark ? "text-white/50" : "text-navy/50"}`}>{p.period}</span>
         </div>
-        <p className={`mt-2 h-4 text-xs font-medium ${dark ? "text-gold" : "text-[#047857]"}`}>
+        <p
+          className={`mt-1.5 text-xs font-medium sm:mt-2 sm:h-4 ${dark ? "text-gold" : "text-[#047857]"}`}
+        >
           {p.note ?? ""}
         </p>
 
         <a
           href="#"
-          className={`mt-5 w-full ${dark ? BTN.gold : p.tier === "Custom" ? BTN.primary : BTN.secondary}`}
+          className={`mt-4 w-full sm:mt-5 ${dark ? BTN.gold : p.tier === "Custom" ? BTN.primary : BTN.secondary}`}
         >
           {p.cta}
         </a>
 
-        <Disclosure label="What's included" onDark={dark} className="mt-4 lg:mt-6">
+        <Disclosure label="What's included" onDark={dark} className="mt-2 sm:mt-4 lg:mt-6">
           <ul className="space-y-2 pb-2 text-[13px] leading-snug">
             {p.features.map((f) => (
               <li key={f} className="flex items-start gap-2">
@@ -101,13 +105,12 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
 export function Pricing() {
   return (
     <>
-      <div className="grid gap-6 px-5 py-16 sm:px-10 lg:grid-cols-12 lg:items-end lg:px-12 lg:py-24">
+      <div className={`grid gap-5 ${PAD.x} ${PAD.y} lg:grid-cols-12 lg:items-end`}>
         <Reveal className="lg:col-span-7">
-          <Pill>Pricing</Pill>
-          <TwoTone
-            lead="Simple, transparent pricing."
-            rest="Start free forever. Upgrade when you're ready to grow."
-            className={`mt-5 ${H2}`}
+          <SectionHead
+            eyebrow="Pricing"
+            title="Simple, transparent pricing."
+            lede="Start free forever. Upgrade when you're ready to grow."
           />
         </Reveal>
         <Reveal className="lg:col-span-4 lg:col-start-9 lg:text-right">

@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { faqs } from "./content";
-import { BTN, H2, Pill, TwoTone } from "./frame";
+import { BTN, PAD, SectionHead } from "./frame";
 
 /*
  * FAQ: heading + contact cell on the left, accordion on the right.
@@ -11,17 +11,16 @@ import { BTN, H2, Pill, TwoTone } from "./frame";
 export function Faq() {
   return (
     <div className="grid lg:grid-cols-[1fr_1.45fr]">
-      <div className="border-b border-navy/10 px-5 py-16 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-24">
+      <div className={`border-b border-navy/10 ${PAD.x} ${PAD.y} lg:border-b-0 lg:border-r`}>
         <Reveal className="lg:sticky lg:top-28">
-          <Pill>FAQ</Pill>
-          <TwoTone
-            lead="Frequently asked questions."
-            rest="Everything you need to know about Aplikant."
-            className={`mt-5 max-w-sm ${H2}`}
+          <SectionHead
+            eyebrow="FAQ"
+            title="Frequently asked questions."
+            lede="Everything you need to know about Aplikant."
           />
-          <div className="mt-10 rounded-xl border border-navy/10 bg-white/70 p-5">
-            <p className="text-[15px] font-medium">Still have questions?</p>
-            <a href="#" className={`${BTN.secondary} mt-4`}>
+          <div className="mt-6 flex items-center justify-between gap-4 rounded-xl border border-navy/10 bg-white/70 p-4 sm:mt-10 sm:block sm:p-5">
+            <p className="text-sm font-medium sm:text-[15px]">Still have questions?</p>
+            <a href="#" className={`${BTN.secondary} shrink-0 sm:mt-4`}>
               Get in touch
             </a>
           </div>
@@ -30,15 +29,17 @@ export function Faq() {
       <ul>
         {faqs.map((f, i) => (
           <li key={f.q} className={i > 0 ? "border-t border-navy/10" : ""}>
-            <details className="group px-5 sm:px-10 lg:px-12" open={i === 0}>
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-[15px] font-medium [&::-webkit-details-marker]:hidden">
+            <details className={`group ${PAD.x}`} open={i === 0}>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-sm font-medium sm:gap-6 sm:py-6 sm:text-[15px] [&::-webkit-details-marker]:hidden">
                 {f.q}
                 <Plus
                   className="h-4 w-4 shrink-0 text-navy/50 transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none"
                   aria-hidden="true"
                 />
               </summary>
-              <p className="max-w-xl pb-6 text-[15px] leading-relaxed text-navy/60">{f.a}</p>
+              <p className="max-w-xl pb-4 text-sm leading-relaxed text-navy/60 sm:pb-6 sm:text-[15px]">
+                {f.a}
+              </p>
             </details>
           </li>
         ))}
