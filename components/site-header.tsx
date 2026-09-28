@@ -211,7 +211,7 @@ function MobileMenu({
       </nav>
       <div className="relative mt-auto space-y-2 px-5 pb-6 pt-6">
         <a
-          href="#"
+          href="/sign-up"
           onClick={() => {
             onClose(false);
           }}
