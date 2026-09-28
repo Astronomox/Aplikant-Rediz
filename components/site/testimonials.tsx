@@ -88,8 +88,8 @@ export function Testimonials({ index }: { index?: string }) {
     <div ref={ref}>
       <div className="relative px-5 py-9 text-center sm:py-16 lg:py-20">
         <DotGrid id="quote-grid" tone="light" fade="radial" />
-        <Pill>Testimonials</Pill>
-        <p className="mt-3 text-sm text-navy/50">Loved by program managers</p>
+        <Eyebrow index={index}>Testimonials</Eyebrow>
+        <h2 className={`mt-3 ${TYPE.h2}`}>Loved by program managers</h2>
         <div className="relative mx-auto mt-6 grid max-w-3xl sm:mt-8">
           <AnimatePresence initial={false}>
             <m.figure
