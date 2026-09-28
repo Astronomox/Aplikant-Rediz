@@ -18,9 +18,9 @@ export interface NavItem {
 /**
  * Light, Attio-style header: colour logo, compact links, outlined "Sign in" beside a
  * solid primary. Sticky, with a hairline bottom edge that gains a soft shadow once
- * scrolled. The active in-page section is tracked with an IntersectionObserver.
- * Below md the links move into a full-screen menu behind a hamburger.
- * Height is fixed at 64px so mobile sticky bars can pin at `top-16`.
+ * scrolled. Nav items are pages; the current one is highlighted from the URL.
+ * Below md the links move into a menu sheet that opens exactly below the header
+ * (measured, so the announcement bar above it can never cover the first item).
  */
 export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
   const [scrolled, setScrolled] = useState(false);
