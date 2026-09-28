@@ -265,11 +265,13 @@ export function DashboardWindow() {
         <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3">
           {STATS.map((s, i) => (
             <Card key={s.label} className="p-3">
-              <div className="flex items-start justify-between">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-navy/55">
+              <div className="flex items-start justify-between gap-2">
+                <p className="min-w-0 pt-0.5 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-navy/55">
                   {s.label}
                 </p>
-                <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${s.chip}`}>
+                <span
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${s.chip}`}
+                >
                   <s.icon className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
