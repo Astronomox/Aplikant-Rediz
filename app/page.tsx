@@ -1,7 +1,5 @@
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { Announcement } from "@/components/site/announcement";
-import { nav } from "@/components/site/content";
+import Link from "next/link";
+import { Reveal } from "@/components/motion/reveal";
 import { DarkBand } from "@/components/site/dark-band";
 import { Faq } from "@/components/site/faq";
 import { Features } from "@/components/site/features";
