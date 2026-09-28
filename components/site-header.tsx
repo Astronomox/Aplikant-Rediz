@@ -75,7 +75,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
                   <Link
                     key={n.label}
                     href={n.href}
-                    aria-current={current ? "location" : undefined}
+                    aria-current={current ? "page" : undefined}
                     className={`rounded-md px-2.5 py-1.5 transition-colors hover:bg-navy/[0.05] hover:text-navy ${
                       current ? "text-navy" : "text-navy/60"
                     }`}
