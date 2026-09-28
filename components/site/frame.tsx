@@ -19,6 +19,7 @@ const SECTION: Record<Tone, string> = {
 };
 const RAILS: Record<Tone, string> = {
   light: "lg:border-navy/10",
+  paper: "lg:border-navy/10",
   dark: "lg:border-white/10",
 };
 
