@@ -206,3 +206,16 @@ export const testimonials = [
     org: "Abuja Social Impact Lab",
   },
 ] as const;
+
+export interface Plan {
+  tier: string;
+  blurb: string;
+  price: string;
+  prefix?: string;
+  period: string;
+  note?: string;
+  badge?: string;
+  featured?: boolean;
+  cta: string;
+  features: string[];
+}
