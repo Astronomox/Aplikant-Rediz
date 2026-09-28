@@ -2,7 +2,6 @@
 
 import { animate, useInView } from "framer-motion";
 import {
-  Accessibility,
   BarChart3,
   Bell,
   CalendarCheck,
@@ -15,7 +14,6 @@ import {
   Settings,
   SquareActivity,
   TrendingUp,
-  UserRound,
   Users,
   Video,
   type LucideIcon,
@@ -92,9 +90,9 @@ const STATS = [
 ] as const;
 
 const DEMOGRAPHICS = [
-  { label: "Females", value: 684, color: "#e11d48", icon: UserRound },
-  { label: "Males", value: 541, color: "#3b82f6", icon: UserRound },
-  { label: "PLWDs", value: 22, color: "#10b981", icon: Accessibility },
+  { label: "Females", value: 684, color: "#e11d48" },
+  { label: "Males", value: 541, color: "#3b82f6" },
+  { label: "PLWDs", value: 22, color: "#10b981" },
 ] as const;
 
 const STATUS = [
