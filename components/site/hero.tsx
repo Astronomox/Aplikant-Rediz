@@ -7,12 +7,9 @@ import { hero } from "./content";
 import { BTN, COLUMN, Pill } from "./frame";
 
 /*
- * Hero, after Attio's: centred copy with compact buttons, then a product "window"
- * that floating fragments pull away from as you scroll.
- *
- * Not a fake dashboard (REFERENCE.md known issue #1): the window holds the animated
- * program-engine graphic, and each fragment is a schematic of a real feature, with
- * no invented people, organisations or numbers.
+ * Hero, after Attio's: centred copy with compact buttons, then a product window
+ * showing the Aplikant dashboard, with feature fragments that pull away from it as
+ * you scroll.
  */
 
 function WindowChrome({ title }: { title: string }) {
