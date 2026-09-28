@@ -183,7 +183,7 @@ function MobileMenu({
       transition={t}
     >
       <DotGrid id="menu-grid" fade="top" />
-      <nav aria-label="Mobile" className="relative px-5 pt-2">
+      <nav aria-label="Mobile" className="relative px-5 pt-1">
         <ul>
           {nav.map((n, i) => (
             <m.li
