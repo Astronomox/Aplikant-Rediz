@@ -1,4 +1,12 @@
-import { ChartColumn, ClipboardCheck, Users, type LucideIcon } from "lucide-react";
+import {
+  ChartColumn,
+  ClipboardCheck,
+  FileStack,
+  ShieldCheck,
+  Users,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
 
 /*
  * Program lifecycle data for the hero visuals. Every label is taken from the
@@ -38,4 +46,11 @@ export const stages: Stage[] = [
     tags: ["Completion rates", "Gender", "Geography", "Outcomes"],
     ai: true,
   },
+];
+
+/** Supporting capabilities that orbit closer to the hub (decorative). */
+export const satellites: { label: string; icon: LucideIcon }[] = [
+  { label: "Programs", icon: FileStack },
+  { label: "M&E Surveys", icon: Zap },
+  { label: "Role-based access", icon: ShieldCheck },
 ];
