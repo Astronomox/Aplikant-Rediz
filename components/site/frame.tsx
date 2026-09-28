@@ -79,7 +79,7 @@ export const TYPE = {
 /** Section spacing, phone-first. */
 export const PAD = {
   x: "px-5 sm:px-8 lg:px-12",
-  y: "py-12 sm:py-16 lg:py-20",
+  y: "py-9 sm:py-14 lg:py-20",
 } as const;
 
 /** Eyebrow + short heading + lede: the head of every section. */
