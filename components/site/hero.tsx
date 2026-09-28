@@ -1,5 +1,6 @@
-import { ArrowRight, QrCode, RefreshCw } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { DashboardWindow } from "@/components/hero/dashboard-window";
+import { FormFragment, QrFragment } from "@/components/hero/fragments";
 import { ProductTour } from "@/components/hero/product-tour";
 import { PlayWhenVisible } from "@/components/fx/play-when-visible";
 import { ParallaxLayer, ScrollScene } from "@/components/motion/scroll-scene";
@@ -26,61 +27,6 @@ function WindowChrome({ title }: { title: string }) {
   );
 }
 
-/** Fragment: application form (paid via Paystack). */
-function FormFragment() {
-  return (
-    <div className="w-[248px] rounded-xl bg-white p-4 text-navy shadow-[0_24px_48px_-24px_rgba(15,23,42,0.45)] ring-1 ring-navy/10">
-      <div className="flex items-center justify-between">
-        <p className="text-[13px] font-semibold">Application form</p>
-        <span className="rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-[#047857]">
-          Paid · Paystack
-        </span>
-      </div>
-      <div className="mt-3 space-y-2.5" aria-hidden="true">
-        {[0.85, 0.6, 0.72].map((w, i) => (
-          <div key={i}>
-            <span className="block h-1.5 w-12 rounded-full bg-navy/15" />
-            <span className="mt-1.5 block h-6 rounded-md bg-navy/[0.04] ring-1 ring-navy/10">
-              <span
-                className="fx-fill block h-full rounded-md bg-navy/[0.06]"
-                style={{ width: `${String(w * 100)}%` }}
-              />
-            </span>
-          </div>
-        ))}
-      </div>
-      <span className="mt-3 flex h-7 items-center justify-center rounded-md bg-navy text-[11px] font-medium text-white">
-        Submit application
-      </span>
-    </div>
-  );
-}
-
-/** Fragment: QR attendance session. */
-function QrFragment() {
-  return (
-    <div className="w-[228px] rounded-xl bg-white p-4 text-navy shadow-[0_24px_48px_-24px_rgba(15,23,42,0.45)] ring-1 ring-navy/10">
-      <div className="flex items-center justify-between">
-        <p className="text-[13px] font-semibold">QR attendance</p>
-        <span className="flex items-center gap-1 rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-[#047857]">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint" />
-          Session open
-        </span>
-      </div>
-      <div className="mt-3 flex items-center justify-center rounded-lg bg-cream py-4 ring-1 ring-navy/5">
-        <QrCode className="h-20 w-20 text-navy" strokeWidth={1.25} aria-hidden="true" />
-      </div>
-      <div className="mt-3 grid grid-cols-2 gap-1.5 text-[11px] font-medium">
-        <span className="flex h-7 items-center justify-center gap-1 rounded-md ring-1 ring-navy/15">
-          Reopen
-        </span>
-        <span className="flex h-7 items-center justify-center gap-1 rounded-md ring-1 ring-navy/15">
-          <RefreshCw className="h-3 w-3" aria-hidden="true" /> Regenerate
-        </span>
-      </div>
-    </div>
-  );
-}
 export function Hero() {
   return (
     <ScrollScene className="relative overflow-hidden border-b border-navy/10 bg-cream text-navy">
