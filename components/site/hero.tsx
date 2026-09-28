@@ -1,5 +1,6 @@
-import { ArrowRight, Check, QrCode, RefreshCw, Sparkles } from "lucide-react";
+import { ArrowRight, QrCode, RefreshCw } from "lucide-react";
 import { DashboardWindow } from "@/components/hero/dashboard-window";
+import { ProductTour } from "@/components/hero/product-tour";
 import { PlayWhenVisible } from "@/components/fx/play-when-visible";
 import { ParallaxLayer, ScrollScene } from "@/components/motion/scroll-scene";
 import { DotGrid } from "@/components/texture/dot-grid";
@@ -80,39 +81,6 @@ function QrFragment() {
     </div>
   );
 }
-
-/** Fragment: AI impact report, terminal-style (Attio's agent console). */
-function ReportFragment() {
-  const lines = ["Completion rates", "Gender breakdowns", "Geographic data", "Learning outcomes"];
-  return (
-    <div className="w-[284px] overflow-hidden rounded-xl bg-[#0a1020] font-mono text-[11px] text-white/80 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
-      <div
-        className="flex h-7 items-center gap-1.5 border-b border-white/10 px-3"
-        aria-hidden="true"
-      >
-        <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-        <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-        <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-      </div>
-      <div className="space-y-1.5 p-3">
-        <p className="text-white">
-          <span className="text-gold">›</span> Generate a donor-ready impact report
-        </p>
-        <p className="flex items-center gap-1.5 text-white/55">
-          <Sparkles className="h-3 w-3 text-gold" aria-hidden="true" /> AI powered report
-        </p>
-        {lines.map((l) => (
-          <p key={l} className="flex items-center gap-1.5 pl-3">
-            <Check className="h-3 w-3 text-mint" aria-hidden="true" />
-            {l}
-          </p>
-        ))}
-        <p className="pl-3 text-white/45">Export · CSV &amp; PDF</p>
-      </div>
-    </div>
-  );
-}
-
 export function Hero() {
   return (
     <ScrollScene className="relative overflow-hidden border-b border-navy/10 bg-cream text-navy">
@@ -157,7 +125,13 @@ export function Hero() {
             <ParallaxLayer y={-40} className="relative z-10">
               <div className="overflow-hidden rounded-t-2xl border border-b-0 border-navy/10 bg-navy text-white shadow-[0_-20px_60px_-30px_rgba(15,23,42,0.5)]">
                 <WindowChrome title="aplikant.app/dashboard" />
-                <DashboardWindow />
+                {/* Phones/tablets: the still dashboard. Desktop: the product film. */}
+                <div className="lg:hidden">
+                  <DashboardWindow />
+                </div>
+                <div className="hidden lg:block">
+                  <ProductTour />
+                </div>
               </div>
             </ParallaxLayer>
 
@@ -166,13 +140,11 @@ export function Hero() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 hidden lg:block"
             >
-              <ParallaxLayer y={-140} className="absolute -left-24 top-10 z-20">
+              {/* Parked at the window's outer corners so they never cover the film. */}
+              <ParallaxLayer y={-140} className="absolute -left-44 -top-8 z-20">
                 <FormFragment />
               </ParallaxLayer>
-              <ParallaxLayer y={-70} className="absolute -left-28 bottom-6 z-20">
-                <ReportFragment />
-              </ParallaxLayer>
-              <ParallaxLayer y={-190} className="absolute -right-20 top-24 z-20">
+              <ParallaxLayer y={-190} className="absolute -right-44 -top-12 z-20">
                 <QrFragment />
               </ParallaxLayer>
             </div>
