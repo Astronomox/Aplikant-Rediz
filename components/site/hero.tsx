@@ -1,6 +1,5 @@
 import { ArrowRight, Check, QrCode, RefreshCw, Sparkles } from "lucide-react";
-import { HeroEngine } from "@/components/hero/hero-engine";
-import { stages } from "@/components/hero/stages";
+import { DashboardWindow } from "@/components/hero/dashboard-window";
 import { PlayWhenVisible } from "@/components/fx/play-when-visible";
 import { ParallaxLayer, ScrollScene } from "@/components/motion/scroll-scene";
 import { DotGrid } from "@/components/texture/dot-grid";
@@ -26,30 +25,6 @@ function WindowChrome({ title }: { title: string }) {
       </span>
       <span className="text-xs text-white/45">{title}</span>
     </div>
-  );
-}
-
-/** Phones/tablets: the three stages as a compact list inside the window. */
-function StageList() {
-  return (
-    <ol className="space-y-2 p-4">
-      {stages.map((s) => (
-        <li
-          key={s.step}
-          className="flex items-center gap-3 rounded-xl bg-white/[0.05] p-3 ring-1 ring-white/10"
-        >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold text-navy">
-            <s.icon className="h-4 w-4" aria-hidden="true" />
-          </span>
-          <span className="min-w-0">
-            <span className="block text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
-              {s.step} · {s.label}
-            </span>
-            <span className="block truncate text-sm font-medium text-white">{s.title}</span>
-          </span>
-        </li>
-      ))}
-    </ol>
   );
 }
 
@@ -184,16 +159,8 @@ export function Hero() {
           <PlayWhenVisible className="relative mx-auto max-w-[1000px]">
             <ParallaxLayer y={-40} className="relative z-10">
               <div className="overflow-hidden rounded-t-2xl border border-b-0 border-navy/10 bg-navy text-white shadow-[0_-20px_60px_-30px_rgba(15,23,42,0.5)]">
-                <WindowChrome title="aplikant.app · Program lifecycle" />
-                <div className="lg:hidden">
-                  <StageList />
-                </div>
-                <div className="relative hidden h-[480px] lg:block">
-                  <DotGrid id="window-grid" fade="radial" />
-                  <div className="absolute left-12 top-1/2 w-[420px] -translate-y-1/2">
-                    <HeroEngine readoutClassName="left-[calc(100%+3.5rem)] top-1/2 -translate-y-1/2" />
-                  </div>
-                </div>
+                <WindowChrome title="aplikant.app/dashboard" />
+                <DashboardWindow />
               </div>
             </ParallaxLayer>
 
