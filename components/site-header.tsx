@@ -220,7 +220,7 @@ function MobileMenu({
           Sign up free
         </a>
         <a
-          href="#"
+          href="/sign-in"
           onClick={() => {
             onClose(false);
           }}
