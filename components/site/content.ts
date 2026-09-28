@@ -372,5 +372,5 @@ export const footer = {
       ],
     },
   ],
-  bottom: "Made with ❤️ for Growth & Impact",
+  bottom: "Brought to you by Enovate Labs",
 } as const;
