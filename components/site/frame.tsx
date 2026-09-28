@@ -87,19 +87,19 @@ export function TwoTone({
 /** Section-heading scale shared by every section. */
 export const H2 = "text-[1.75rem] leading-[1.12] sm:text-4xl lg:text-[2.625rem]";
 
-/** Attio-sized buttons: compact, 36-40px tall. */
+/** Attio-sized action buttons: compact, 36-40px tall, square corners by design. */
 export const BTN = {
   primary:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-navy px-4 text-sm font-medium text-white shadow-sm hover:bg-navy/90",
-  gold: "btn-gold inline-flex h-10 items-center justify-center gap-1.5 rounded-lg px-4 text-sm",
+    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none bg-navy px-4 text-sm font-medium text-white shadow-sm hover:bg-navy/90",
+  gold: "btn-gold inline-flex h-10 items-center justify-center gap-1.5 rounded-none px-4 text-sm",
   secondary:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border border-navy/15 bg-white px-4 text-sm font-medium text-navy shadow-sm hover:bg-navy/[0.03]",
+    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none border border-navy/15 bg-white px-4 text-sm font-medium text-navy shadow-sm hover:bg-navy/[0.03]",
   secondaryDark:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border border-white/15 bg-white/[0.04] px-4 text-sm font-medium text-white hover:bg-white/10",
+    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none border border-white/15 bg-white/[0.04] px-4 text-sm font-medium text-white hover:bg-white/10",
   small:
-    "btn-press group inline-flex h-8 items-center gap-1 rounded-md border border-navy/15 bg-white/70 px-2.5 text-xs font-medium text-navy hover:bg-white",
+    "btn-press group inline-flex h-8 items-center gap-1 rounded-none border border-navy/15 bg-white/70 px-2.5 text-xs font-medium text-navy hover:bg-white",
   smallDark:
-    "btn-press group inline-flex h-8 items-center gap-1 rounded-md border border-white/15 bg-white/[0.04] px-2.5 text-xs font-medium text-white hover:bg-white/10",
+    "btn-press group inline-flex h-8 items-center gap-1 rounded-none border border-white/15 bg-white/[0.04] px-2.5 text-xs font-medium text-white hover:bg-white/10",
 } as const;
 
 /** Vertical "barcode" hairline texture (Attio's changelog / CTA strips). */
