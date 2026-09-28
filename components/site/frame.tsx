@@ -57,3 +57,33 @@ export function Pill({ children, tone = "light" }: { children: ReactNode; tone?:
     </span>
   );
 }
+
+/**
+ * Two-tone copy: a strong lead sentence, then a muted continuation in the same line.
+ * Used for headings and for panel copy alike.
+ */
+export function TwoTone({
+  lead,
+  rest,
+  tone = "light",
+  as: Tag = "h2",
+  className = "",
+}: {
+  lead: string;
+  rest?: string;
+  tone?: Tone;
+  as?: "h1" | "h2" | "h3" | "p";
+  className?: string;
+}) {
+  return (
+    <Tag className={`font-medium tracking-[-0.02em] ${className}`}>
+      {lead}
+      {rest && (
+        <>
+          {" "}
+          <span className={tone === "dark" ? "text-white/45" : "text-navy/45"}>{rest}</span>
+        </>
+      )}
+    </Tag>
+  );
+}
