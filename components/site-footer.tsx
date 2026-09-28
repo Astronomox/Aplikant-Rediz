@@ -41,7 +41,7 @@ export function SiteFooter() {
                 <a href="/sign-up" className={BTN.gold}>
                   Get Started for Free
                 </a>
-                <a href="#pricing" className={BTN.secondaryDark}>
+                <a href="/pricing" className={BTN.secondaryDark}>
                   View Pricing
                 </a>
               </div>
