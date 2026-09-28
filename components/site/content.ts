@@ -28,3 +28,13 @@ export const stats = [
 
 export type FeatureKey =
   "programs" | "applications" | "participants" | "reports" | "surveys" | "access";
+
+export interface Feature {
+  key: FeatureKey;
+  tab: string;
+  lead: string;
+  rest: string;
+  ai?: boolean;
+  /** Two supporting cells, all from the site's feature and pricing copy. */
+  cells: [{ lead: string; rest: string }, { lead: string; rest: string }];
+}
