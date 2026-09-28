@@ -152,53 +152,9 @@ export function DarkBand({ index }: { index?: string }) {
           </Reveal>
           <Horizon />
         </div>
-
-        {/* 2. Steps as cells */}
-        <ol className="grid gap-px border-t border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => {
-            const Icon = STEP_ICONS[i] ?? FolderPlus;
-            return (
-              <li key={s.n} className={`bg-navy ${PAD.x} py-6 sm:py-8 lg:px-7`}>
-                <Reveal index={i}>
-                  <div className="flex items-center justify-between">
-                    <Icon className="h-5 w-5 text-white/70" strokeWidth={1.5} aria-hidden="true" />
-                    <span className="font-mono text-xs text-gold">{s.n}</span>
-                  </div>
-                  <h3 className={`mt-5 ${TYPE.h3}`}>{s.title}</h3>
-                  <p className={`mt-1.5 ${TYPE.body} text-white/55`}>{s.body}</p>
-                </Reveal>
-              </li>
-            );
-          })}
-        </ol>
-
-        {/* 3. More than applications */}
-        <div className={`border-t border-white/10 ${PAD.x} ${PAD.y}`}>
-          <Reveal>
-            <SectionHead
-              tone="dark"
-              eyebrow="Growth & up"
-              title="More than applications."
-              lede="Courses, certificates, competitions and live sessions, in the same place."
-            />
-          </Reveal>
-          <ul className="mt-8 grid gap-px bg-white/10 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
-            {beyond.map((b, i) => {
-              const Icon = BEYOND_ICONS[i] ?? BookOpen;
-              return (
-                <li key={b.title} className="bg-navy py-5 sm:p-6">
-                  <Reveal index={i}>
-                    <Icon className="h-5 w-5 text-gold" strokeWidth={1.5} aria-hidden="true" />
-                    <h3 className={`mt-4 ${TYPE.h3}`}>{b.title}</h3>
-                    <p className={`mt-1.5 ${TYPE.body} text-white/55`}>{b.body}</p>
-                  </Reveal>
-                </li>
-              );
-            })}
-          </ul>
-          <a href="#pricing" className={`${BTN.smallDark} mt-8`}>
-            See plans <span aria-hidden="true">→</span>
-          </a>
+        <Steps />
+        <div className="border-t border-white/10">
+          <Beyond />
         </div>
       </div>
     </section>
