@@ -280,6 +280,17 @@ export function DashboardWindow() {
             <p className="text-xs font-semibold">Participant Demographics</p>
             <div className="mt-3 flex items-center gap-5">
               <Donut on={on} />
+              <ul className="space-y-2 text-[11px]">
+                {DEMOGRAPHICS.map((d) => (
+                  <li key={d.label} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full" style={{ background: d.color }} />
+                    <span className="w-14 text-navy/60">{d.label}</span>
+                    <span className="font-semibold">
+                      <Count to={d.value} on={on} />
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Card>
         </div>
