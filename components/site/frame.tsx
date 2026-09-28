@@ -9,7 +9,8 @@ import type { ReactNode } from "react";
  * Two tones: "light" (cream, navy lines) and "dark" (navy, white lines).
  */
 
-export type Tone = "light" | "dark";
+/** light = cream, paper = white (alternating light sections), dark = navy. */
+export type Tone = "light" | "paper" | "dark";
 
 const SECTION: Record<Tone, string> = {
   light: "bg-cream text-navy border-navy/10",
