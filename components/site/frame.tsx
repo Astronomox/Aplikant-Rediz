@@ -145,6 +145,8 @@ export function SectionHead({
   center = false,
   className = "",
 }: {
+  /** Section number shown before the eyebrow ("01"), so sections read as a sequence. */
+  index?: string;
   eyebrow: string;
   title: string;
   lede?: string;
@@ -155,8 +157,10 @@ export function SectionHead({
   const muted = tone === "dark" ? "text-white/55" : "text-navy/55";
   return (
     <div className={`${center ? "mx-auto text-center" : ""} max-w-2xl ${className}`}>
-      <Pill tone={tone}>{eyebrow}</Pill>
-      <h2 className={`mt-4 ${TYPE.h2}`}>{title}</h2>
+      <Eyebrow index={index} tone={tone}>
+        {eyebrow}
+      </Eyebrow>
+      <h2 className={`mt-3 sm:mt-4 ${TYPE.h2}`}>{title}</h2>
       {lede && <p className={`mt-3 ${TYPE.lede} ${muted}`}>{lede}</p>}
     </div>
   );
