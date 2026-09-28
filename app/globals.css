@@ -174,3 +174,8 @@ body {
     opacity: 0;
   }
 }
+@keyframes fx-border-spin {
+  to {
+    --fx-angle: 360deg;
+  }
+}
