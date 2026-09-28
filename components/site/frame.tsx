@@ -105,3 +105,17 @@ export const BTN = {
   smallDark:
     "btn-press group inline-flex h-8 items-center gap-1 rounded-md border border-white/15 bg-white/[0.04] px-2.5 text-xs font-medium text-white hover:bg-white/10",
 } as const;
+
+/** Vertical "barcode" hairline texture (Attio's changelog / CTA strips). */
+export function TickStrip({ tone = "light", className = "" }: { tone?: Tone; className?: string }) {
+  const c = tone === "dark" ? "rgba(255,255,255,0.10)" : "rgba(15,23,42,0.12)";
+  return (
+    <div
+      aria-hidden="true"
+      className={`h-12 ${className}`}
+      style={{
+        backgroundImage: `repeating-linear-gradient(90deg, ${c} 0 1px, transparent 1px 14px)`,
+      }}
+    />
+  );
+}
