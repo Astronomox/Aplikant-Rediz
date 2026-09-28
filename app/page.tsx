@@ -34,22 +34,22 @@ export default function Home() {
         <Features cell="bg-white" />
       </Section>
 
-      <DarkBand />
+      <DarkBand index="02" />
 
-      <Section>
-        <Testimonials />
+      <Section tone="light">
+        <Testimonials index="03" />
       </Section>
 
-      <Section>
-        <Scale />
+      <Section tone="paper">
+        <Scale index="04" />
       </Section>
 
-      <Section id="pricing">
-        <Pricing />
+      <Section id="pricing" tone="light">
+        <Pricing index="05" />
       </Section>
 
-      <Section id="faq">
-        <Faq />
+      <Section id="faq" tone="paper">
+        <Faq index="06" />
       </Section>
 
       <SiteFooter />
