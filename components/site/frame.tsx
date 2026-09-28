@@ -59,11 +59,11 @@ export function Pill({ children, tone = "light" }: { children: ReactNode; tone?:
 
 /*
  * Type system. One scale for the whole page, phone-first:
- *   display  hero + band headlines   30 / 48 / 56 px
- *   h2       section headings        22 / 30 / 36 px
- *   h3       card titles             15 px
- *   lede     text under a heading    14 / 16 px
- *   body     card copy               14 px
+ *   display  hero + band headlines   26 / 44 / 56 px
+ *   h2       section headings        20 / 28 / 36 px
+ *   h3       card titles             14 / 15 px
+ *   lede     text under a heading    13 / 16 px
+ *   body     card copy               13 / 14 px
  *   label    eyebrows, pills         12 px
  * Headings stay short; supporting copy is always a separate, body-sized paragraph.
  */
