@@ -4,6 +4,7 @@ import {
   BarChart3,
   Bell,
   CalendarCheck,
+  ClipboardList,
   FileText,
   FolderKanban,
   Headphones,
@@ -11,11 +12,13 @@ import {
   Plus,
   Settings,
   SquareActivity,
+  TrendingUp,
   Users,
   Video,
   type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { type ReactNode } from "react";
 
 /*
  * The hero's product window: Aplikant's dashboard, recreated from the live app's
@@ -48,6 +51,51 @@ const NAV: { group: string; items: { label: string; icon: LucideIcon; active?: b
     ],
   },
 ];
+
+const STATS = [
+  {
+    label: "Active programs",
+    value: 8,
+    suffix: "",
+    pill: "8 total",
+    icon: FolderKanban,
+    chip: "bg-navy/[0.07] text-navy",
+  },
+  {
+    label: "Total participants",
+    value: 1247,
+    suffix: "",
+    pill: "enrolled",
+    icon: Users,
+    chip: "bg-gold/15 text-[#b45309]",
+  },
+  {
+    label: "Completion rate",
+    value: 87,
+    suffix: "%",
+    pill: "1,085 completed",
+    icon: TrendingUp,
+    chip: "bg-mint/15 text-[#047857]",
+  },
+  {
+    label: "Open applications",
+    value: 342,
+    suffix: "",
+    pill: "pending review",
+    icon: ClipboardList,
+    chip: "bg-navy/[0.07] text-navy",
+  },
+] as const;
+
+function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <div
+      className={`rounded-xl border border-white/70 bg-white/55 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.25)] backdrop-blur ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export function DashboardWindow() {
   return (
@@ -113,6 +161,23 @@ export function DashboardWindow() {
           <span className="flex items-center gap-1 rounded-md bg-navy px-2.5 py-1.5 text-[11px] font-semibold text-white">
             <Plus className="h-3 w-3" aria-hidden="true" /> New Program
           </span>
+        </div>
+
+        {/* Stats */}
+        <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3">
+          {STATS.map((s) => (
+            <Card key={s.label} className="p-3">
+              <div className="flex items-start justify-between">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-navy/55">
+                  {s.label}
+                </p>
+              </div>
+              <p className="-mt-1 text-2xl font-bold tracking-tight">
+                {s.value.toLocaleString("en-US")}
+                {s.suffix}
+              </p>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
