@@ -196,7 +196,7 @@ function MobileMenu({
               <Link
                 ref={i === 0 ? firstLink : undefined}
                 href={n.href}
-                aria-current={active === n.href ? "location" : undefined}
+                aria-current={active === n.href ? "page" : undefined}
                 onClick={() => {
                   onClose(false);
                 }}
