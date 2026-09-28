@@ -151,9 +151,9 @@ function qrModules(seed: number) {
 function Finder({ x, y }: { x: number; y: number }) {
   return (
     <g>
-      <rect x={x} y={y} width={7} height={7} rx={1.4} fill="#0f172a" />
-      <rect x={x + 1} y={y + 1} width={5} height={5} rx={1} fill="white" />
-      <rect x={x + 2} y={y + 2} width={3} height={3} rx={0.7} fill="#0f172a" />
+      <rect x={x} y={y} width={7} height={7} fill="#0f172a" />
+      <rect x={x + 1} y={y + 1} width={5} height={5} fill="white" />
+      <rect x={x + 2} y={y + 2} width={3} height={3} fill="#0f172a" />
     </g>
   );
 }
@@ -193,7 +193,7 @@ export function QrFragment() {
             exit={{ opacity: 0, filter: "blur(4px)", scale: 1.04 }}
             transition={{ duration: 0.35 }}
           >
-            <rect x={-1} y={-1} width={QR_N + 2} height={QR_N + 2} rx={2} fill="white" />
+            <rect x={-1} y={-1} width={QR_N + 2} height={QR_N + 2} fill="white" />
             {modules.map(([x, y]) => (
               <rect
                 key={`${String(x)}-${String(y)}`}
@@ -201,7 +201,7 @@ export function QrFragment() {
                 y={y + 0.08}
                 width={0.84}
                 height={0.84}
-                rx={0.25}
+
                 fill="#0f172a"
               />
             ))}
