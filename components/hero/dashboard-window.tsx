@@ -1,5 +1,6 @@
 "use client";
 
+import { animate, useInView } from "framer-motion";
 import {
   BarChart3,
   Bell,
@@ -18,7 +19,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
-import { type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
 
 /*
  * The hero's product window: Aplikant's dashboard, recreated from the live app's
@@ -87,6 +89,30 @@ const STATS = [
   },
 ] as const;
 
+/** Counts from 0 to `to` once `on` flips true. */
+function Count({ to, on, suffix = "" }: { to: number; on: boolean; suffix?: string }) {
+  const [v, setV] = useState(on ? to : 0);
+  useEffect(() => {
+    if (!on) return;
+    const c = animate(0, to, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (x) => {
+        setV(Math.round(x));
+      },
+    });
+    return () => {
+      c.stop();
+    };
+  }, [on, to]);
+  return (
+    <span className="tabular-nums">
+      {v.toLocaleString("en-US")}
+      {suffix}
+    </span>
+  );
+}
+
 function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div
@@ -98,8 +124,14 @@ function Card({ children, className = "" }: { children: ReactNode; className?: s
 }
 
 export function DashboardWindow() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
+  const reduced = usePrefersReducedMotion();
+  const on = inView || reduced;
+
   return (
     <div
+      ref={ref}
       role="img"
       aria-label="Aplikant dashboard: programs, participants, completion rate, applications, demographics and program progress"
       className="flex text-navy lg:h-[560px]"
@@ -176,8 +208,7 @@ export function DashboardWindow() {
                 </span>
               </div>
               <p className="-mt-1 text-2xl font-bold tracking-tight">
-                {s.value.toLocaleString("en-US")}
-                {s.suffix}
+                <Count to={s.value} on={on} suffix={s.suffix} />
               </p>
               <span
                 className={`mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px] font-medium ${
