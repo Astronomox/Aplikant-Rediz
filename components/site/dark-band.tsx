@@ -69,7 +69,73 @@ function Horizon() {
   );
 }
 
-export function DarkBand() {
+/** The four steps as a row of hairline cells (navy). */
+export function Steps() {
+  return (
+    <ol className="grid gap-px border-t border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => {
+        const Icon = STEP_ICONS[i] ?? FolderPlus;
+        return (
+          <li key={s.n} className={`bg-navy ${PAD.x} py-5 sm:py-7 lg:px-7`}>
+            <Reveal index={i}>
+              <div className="flex items-center justify-between">
+                <Icon
+                  className="h-4 w-4 text-white/70 sm:h-5 sm:w-5"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <span className="font-mono text-xs text-gold">{s.n}</span>
+              </div>
+              <h3 className={`mt-3 sm:mt-5 ${TYPE.h3}`}>{s.title}</h3>
+              <p className={`mt-1 ${TYPE.body} text-white/55`}>{s.body}</p>
+            </Reveal>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+/** Growth-plan capabilities as a four-cell grid (navy). */
+export function Beyond({ index }: { index?: string }) {
+  return (
+    <div className={`${PAD.x} ${PAD.y}`}>
+      <Reveal>
+        <SectionHead
+          tone="dark"
+          index={index}
+          eyebrow="Growth & up"
+          title="More than applications."
+          lede="Courses, certificates, competitions and live sessions, in the same place."
+        />
+      </Reveal>
+      <ul className="mt-6 grid gap-px bg-white/10 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
+        {beyond.map((b, i) => {
+          const Icon = BEYOND_ICONS[i] ?? BookOpen;
+          return (
+            <li key={b.title} className="bg-navy py-4 sm:p-6">
+              <Reveal index={i}>
+                <Icon
+                  className="h-4 w-4 text-gold sm:h-5 sm:w-5"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <h3 className={`mt-3 sm:mt-4 ${TYPE.h3}`}>{b.title}</h3>
+                <p className={`mt-1 ${TYPE.body} text-white/55`}>{b.body}</p>
+              </Reveal>
+            </li>
+          );
+        })}
+      </ul>
+      <Link href="/pricing" className={`${BTN.smallDark} mt-6 sm:mt-8`}>
+        See plans <span aria-hidden="true">→</span>
+      </Link>
+    </div>
+  );
+}
+
+/** Homepage band: heading over the horizon, the steps, then Beyond. */
+export function DarkBand({ index }: { index?: string }) {
   return (
     <section id="how-it-works" className="relative border-b border-white/10 bg-navy text-white">
       <div className={`${COLUMN} relative lg:border-x lg:border-white/10`}>
