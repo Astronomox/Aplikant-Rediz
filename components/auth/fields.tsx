@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, type ReactNode } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { useId, useState, type InputHTMLAttributes, type ReactNode } from "react";
 
 /*
  * Form primitives for the auth pages. Labels are real <label>s, errors are announced
@@ -46,6 +47,27 @@ export function Field({
           {error ?? hint}
         </p>
       )}
+    </div>
+  );
+}
+
+export function PasswordInput(
+  props: Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "className">,
+) {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative">
+      <input {...props} type={show ? "text" : "password"} className={`${INPUT} pr-11`} />
+      <button
+        type="button"
+        onClick={() => {
+          setShow((s) => !s);
+        }}
+        aria-label={show ? "Hide password" : "Show password"}
+        className="absolute right-1 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md text-navy/45 hover:text-navy"
+      >
+        {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+      </button>
     </div>
   );
 }
