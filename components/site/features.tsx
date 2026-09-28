@@ -36,8 +36,8 @@ export function Features({ cell = "bg-cream" }: { cell?: string }) {
           <Reveal key={f.key} index={i % 3} className={cell}>
             <article id={f.key} className="h-full scroll-mt-20 px-5 py-5 sm:px-8 sm:py-7 lg:px-10">
               <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-navy text-gold">
-                  <Icon className="h-4 w-4" aria-hidden="true" />
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-navy text-gold sm:h-8 sm:w-8">
+                  <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                 </span>
                 {f.ai && (
                   <span className="rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-[#047857]">
