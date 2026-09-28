@@ -109,6 +109,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
               aria-controls="mobile-menu"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => {
+                setMenuTop(Math.round(headerRef.current?.getBoundingClientRect().bottom ?? 56));
                 setMenuOpen((o) => !o);
               }}
             >
@@ -125,7 +126,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
       {/* Outside <header>: its backdrop-filter would make it the containing block
           for this fixed-position sheet. */}
       <AnimatePresence>
-        {menuOpen && <MobileMenu nav={nav} active={active} onClose={closeMenu} />}
+        {menuOpen && <MobileMenu nav={nav} active={active} top={menuTop} onClose={closeMenu} />}
       </AnimatePresence>
     </>
   );
