@@ -22,7 +22,7 @@ import { REVEAL_EASE, STAGGER } from "@/components/motion/reveal";
  */
 
 /** Shared by every icon part and by the chip, so they move as one. */
-export const HOVER_TRANSITION: Transition = { duration: 0.35, ease: REVEAL_EASE };
+const HOVER_TRANSITION: Transition = { duration: 0.35, ease: REVEAL_EASE };
 
 const DRAW_DURATION = 0.7;
 const DRAW_START = 0.2; // after the card itself has started fading up
