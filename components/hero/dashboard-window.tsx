@@ -97,6 +97,12 @@ const DEMOGRAPHICS = [
   { label: "PLWDs", value: 22, color: "#10b981", icon: Accessibility },
 ] as const;
 
+const STATUS = [
+  { label: "Active", value: 5, color: "bg-mint" },
+  { label: "Upcoming", value: 2, color: "bg-gold" },
+  { label: "Completed", value: 1, color: "bg-navy/70" },
+] as const;
+
 /** Counts from 0 to `to` once `on` flips true. */
 function Count({ to, on, suffix = "" }: { to: number; on: boolean; suffix?: string }) {
   const [v, setV] = useState(on ? to : 0);
@@ -181,6 +187,7 @@ export function DashboardWindow() {
   const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
   const reduced = usePrefersReducedMotion();
   const on = inView || reduced;
+  const maxStatus = Math.max(...STATUS.map((s) => s.value));
 
   return (
     <div
@@ -291,6 +298,26 @@ export function DashboardWindow() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </Card>
+          <Card className="p-4">
+            <p className="text-xs font-semibold">Programs by Status</p>
+            <div className="mt-4 space-y-3">
+              {STATUS.map((s, i) => (
+                <div key={s.label} className="flex items-center gap-3 text-[11px]">
+                  <span className="w-16 text-navy/60">{s.label}</span>
+                  <span className="relative h-3 flex-1 overflow-hidden rounded-full bg-navy/[0.06]">
+                    <span
+                      className={`absolute inset-y-0 left-0 rounded-full ${s.color} ${ease}`}
+                      style={{
+                        width: on ? `${String((s.value / maxStatus) * 100)}%` : "0%",
+                        transitionDelay: `${String(300 + i * 120)}ms`,
+                      }}
+                    />
+                  </span>
+                  <span className="w-3 text-right font-semibold">{s.value}</span>
+                </div>
+              ))}
             </div>
           </Card>
         </div>
