@@ -28,11 +28,11 @@ import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced
  * programs by status, active programs). Everything animates in once on view.
  */
 
-const NAV: { group: string; items: { label: string; icon: LucideIcon; active?: boolean }[] }[] = [
+const NAV: { group: string; items: { label: string; icon: LucideIcon }[] }[] = [
   {
     group: "Overview",
     items: [
-      { label: "Dashboard", icon: LayoutDashboard, active: true },
+      { label: "Dashboard", icon: LayoutDashboard },
       { label: "Programs", icon: FolderKanban },
     ],
   },
@@ -186,12 +186,185 @@ function Card({ children, className = "" }: { children: ReactNode; className?: s
   );
 }
 
+/** The app sidebar, with the given item highlighted. Items carry data-tour hooks. */
+export function Sidebar({ active = "Dashboard" }: { active?: string }) {
+  return (
+    <aside className="hidden w-[196px] shrink-0 flex-col bg-[#0e1a36] px-3 py-4 text-white lg:flex">
+      <div className="flex items-center gap-1.5 px-2">
+        <Image
+          src="/logo-white.png"
+          alt=""
+          width={96}
+          height={48}
+          className="-my-3 h-auto w-[86px]"
+        />
+      </div>
+      <nav className="mt-4 space-y-3.5">
+        {NAV.map((g) => (
+          <div key={g.group}>
+            <p className="px-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/35">
+              {g.group}
+            </p>
+            <ul className="mt-1 space-y-0.5">
+              {g.items.map((it) => (
+                <li
+                  key={it.label}
+                  data-tour={`nav-${it.label}`}
+                  className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] font-medium ${
+                    it.label === active
+                      ? "bg-white/10 text-white ring-1 ring-white/15"
+                      : "text-white/60"
+                  }`}
+                >
+                  <it.icon className="h-3.5 w-3.5" aria-hidden="true" />
+                  {it.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      <ul className="mt-auto space-y-0.5 border-t border-white/10 pt-3 text-[11px] font-medium text-white/60">
+        {[
+          { label: "Notifications", icon: Bell },
+          { label: "Support", icon: Headphones },
+          { label: "Settings", icon: Settings },
+        ].map((it) => (
+          <li key={it.label} className="flex items-center gap-2 px-2 py-1.5">
+            <it.icon className="h-3.5 w-3.5" aria-hidden="true" />
+            {it.label}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+/** The Dashboard page body. `on` starts its count-ups and chart animations. */
+export function DashboardCanvas({ on }: { on: boolean }) {
+  const maxStatus = Math.max(...STATUS.map((s) => s.value));
+  return (
+    <div className="relative min-w-0 flex-1 overflow-hidden bg-[linear-gradient(135deg,#dbe9fb_0%,#eef3ef_40%,#f6eee4_70%,#f8e3ec_100%)] p-4 lg:p-6">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-lg font-semibold tracking-tight lg:text-xl">Dashboard</p>
+          <p className="text-[11px] text-navy/55">Overview of your programs and activities</p>
+        </div>
+        <span className="flex items-center gap-1 rounded-md bg-navy px-2.5 py-1.5 text-[11px] font-semibold text-white">
+          <Plus className="h-3 w-3" aria-hidden="true" /> New Program
+        </span>
+      </div>
+
+      {/* Stats */}
+      <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3">
+        {STATS.map((s, i) => (
+          <Card key={s.label} className="p-3">
+            <div className="flex items-start justify-between gap-2">
+              <p className="min-w-0 pt-0.5 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-navy/55">
+                {s.label}
+              </p>
+              <span
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${s.chip}`}
+              >
+                <s.icon className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+            </div>
+            <p className="-mt-1 text-2xl font-bold tracking-tight">
+              <Count to={s.value} on={on} suffix={s.suffix} />
+            </p>
+            <span
+              className={`mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px] font-medium ${
+                i === 1 ? "bg-mint/15 text-[#047857]" : "bg-navy/[0.06] text-navy/60"
+              }`}
+            >
+              {s.pill}
+            </span>
+          </Card>
+        ))}
+      </div>
+
+      {/* Charts */}
+      <div className="mt-3 hidden gap-3 lg:grid lg:grid-cols-2">
+        <Card className="p-4">
+          <p className="text-xs font-semibold">Participant Demographics</p>
+          <div className="mt-3 flex items-center gap-5">
+            <Donut on={on} />
+            <ul className="space-y-2 text-[11px]">
+              {DEMOGRAPHICS.map((d) => (
+                <li key={d.label} className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full" style={{ background: d.color }} />
+                  <span className="w-14 text-navy/60">{d.label}</span>
+                  <span className="font-semibold">
+                    <Count to={d.value} on={on} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Card>
+        <Card className="p-4">
+          <p className="text-xs font-semibold">Programs by Status</p>
+          <div className="mt-4 space-y-3">
+            {STATUS.map((s, i) => (
+              <div key={s.label} className="flex items-center gap-3 text-[11px]">
+                <span className="w-16 text-navy/60">{s.label}</span>
+                <span className="relative h-3 flex-1 overflow-hidden rounded-full bg-navy/[0.06]">
+                  <span
+                    className={`absolute inset-y-0 left-0 rounded-full ${s.color} ${ease}`}
+                    style={{
+                      width: on ? `${String((s.value / maxStatus) * 100)}%` : "0%",
+                      transitionDelay: `${String(300 + i * 120)}ms`,
+                    }}
+                  />
+                </span>
+                <span className="w-3 text-right font-semibold">{s.value}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+
+      {/* Active programs */}
+      <Card className="mt-3 p-4">
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-semibold">Active Programs</p>
+          <p className="text-[10px] font-medium text-navy/45">View all</p>
+        </div>
+        <ul className="mt-3 space-y-3">
+          {PROGRAMS.map((p, i) => (
+            <li key={p.name} className="flex items-center gap-3 text-[11px]">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-navy text-gold">
+                <FolderKanban className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-semibold">{p.name}</span>
+                <span className="text-[10px] text-navy/50">{p.type}</span>
+              </span>
+              <span className="relative hidden h-2 w-40 overflow-hidden rounded-full bg-navy/[0.07] sm:block">
+                <span
+                  className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-gold to-mint ${ease}`}
+                  style={{
+                    width: on ? `${String(p.progress)}%` : "0%",
+                    transitionDelay: `${String(500 + i * 150)}ms`,
+                  }}
+                />
+              </span>
+              <span className="w-9 text-right font-semibold tabular-nums">
+                <Count to={p.progress} on={on} suffix="%" />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+    </div>
+  );
+}
+
 export function DashboardWindow() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
   const reduced = usePrefersReducedMotion();
   const on = inView || reduced;
-  const maxStatus = Math.max(...STATUS.map((s) => s.value));
 
   return (
     <div
@@ -200,167 +373,8 @@ export function DashboardWindow() {
       aria-label="Aplikant dashboard: programs, participants, completion rate, applications, demographics and program progress"
       className="flex text-navy lg:h-[560px]"
     >
-      {/* Sidebar */}
-      <aside className="hidden w-[196px] shrink-0 flex-col bg-[#0e1a36] px-3 py-4 text-white lg:flex">
-        <div className="flex items-center gap-1.5 px-2">
-          <Image
-            src="/logo-white.png"
-            alt=""
-            width={96}
-            height={48}
-            className="-my-3 h-auto w-[86px]"
-          />
-        </div>
-        <nav className="mt-4 space-y-3.5">
-          {NAV.map((g) => (
-            <div key={g.group}>
-              <p className="px-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/35">
-                {g.group}
-              </p>
-              <ul className="mt-1 space-y-0.5">
-                {g.items.map((it) => (
-                  <li
-                    key={it.label}
-                    className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] font-medium ${
-                      it.active ? "bg-white/10 text-white ring-1 ring-white/15" : "text-white/60"
-                    }`}
-                  >
-                    <it.icon className="h-3.5 w-3.5" aria-hidden="true" />
-                    {it.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </nav>
-        <ul className="mt-auto space-y-0.5 border-t border-white/10 pt-3 text-[11px] font-medium text-white/60">
-          {[
-            { label: "Notifications", icon: Bell },
-            { label: "Support", icon: Headphones },
-            { label: "Settings", icon: Settings },
-          ].map((it) => (
-            <li key={it.label} className="flex items-center gap-2 px-2 py-1.5">
-              <it.icon className="h-3.5 w-3.5" aria-hidden="true" />
-              {it.label}
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      {/* Canvas */}
-      <div className="relative min-w-0 flex-1 overflow-hidden bg-[linear-gradient(135deg,#dbe9fb_0%,#eef3ef_40%,#f6eee4_70%,#f8e3ec_100%)] p-4 lg:p-6">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="text-lg font-semibold tracking-tight lg:text-xl">Dashboard</p>
-            <p className="text-[11px] text-navy/55">Overview of your programs and activities</p>
-          </div>
-          <span className="flex items-center gap-1 rounded-md bg-navy px-2.5 py-1.5 text-[11px] font-semibold text-white">
-            <Plus className="h-3 w-3" aria-hidden="true" /> New Program
-          </span>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3">
-          {STATS.map((s, i) => (
-            <Card key={s.label} className="p-3">
-              <div className="flex items-start justify-between gap-2">
-                <p className="min-w-0 pt-0.5 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-navy/55">
-                  {s.label}
-                </p>
-                <span
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${s.chip}`}
-                >
-                  <s.icon className="h-3.5 w-3.5" aria-hidden="true" />
-                </span>
-              </div>
-              <p className="-mt-1 text-2xl font-bold tracking-tight">
-                <Count to={s.value} on={on} suffix={s.suffix} />
-              </p>
-              <span
-                className={`mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px] font-medium ${
-                  i === 1 ? "bg-mint/15 text-[#047857]" : "bg-navy/[0.06] text-navy/60"
-                }`}
-              >
-                {s.pill}
-              </span>
-            </Card>
-          ))}
-        </div>
-
-        {/* Charts */}
-        <div className="mt-3 hidden gap-3 lg:grid lg:grid-cols-2">
-          <Card className="p-4">
-            <p className="text-xs font-semibold">Participant Demographics</p>
-            <div className="mt-3 flex items-center gap-5">
-              <Donut on={on} />
-              <ul className="space-y-2 text-[11px]">
-                {DEMOGRAPHICS.map((d) => (
-                  <li key={d.label} className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full" style={{ background: d.color }} />
-                    <span className="w-14 text-navy/60">{d.label}</span>
-                    <span className="font-semibold">
-                      <Count to={d.value} on={on} />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Card>
-          <Card className="p-4">
-            <p className="text-xs font-semibold">Programs by Status</p>
-            <div className="mt-4 space-y-3">
-              {STATUS.map((s, i) => (
-                <div key={s.label} className="flex items-center gap-3 text-[11px]">
-                  <span className="w-16 text-navy/60">{s.label}</span>
-                  <span className="relative h-3 flex-1 overflow-hidden rounded-full bg-navy/[0.06]">
-                    <span
-                      className={`absolute inset-y-0 left-0 rounded-full ${s.color} ${ease}`}
-                      style={{
-                        width: on ? `${String((s.value / maxStatus) * 100)}%` : "0%",
-                        transitionDelay: `${String(300 + i * 120)}ms`,
-                      }}
-                    />
-                  </span>
-                  <span className="w-3 text-right font-semibold">{s.value}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Active programs */}
-        <Card className="mt-3 p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold">Active Programs</p>
-            <p className="text-[10px] font-medium text-navy/45">View all</p>
-          </div>
-          <ul className="mt-3 space-y-3">
-            {PROGRAMS.map((p, i) => (
-              <li key={p.name} className="flex items-center gap-3 text-[11px]">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-navy text-gold">
-                  <FolderKanban className="h-3.5 w-3.5" aria-hidden="true" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate font-semibold">{p.name}</span>
-                  <span className="text-[10px] text-navy/50">{p.type}</span>
-                </span>
-                <span className="relative hidden h-2 w-40 overflow-hidden rounded-full bg-navy/[0.07] sm:block">
-                  <span
-                    className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-gold to-mint ${ease}`}
-                    style={{
-                      width: on ? `${String(p.progress)}%` : "0%",
-                      transitionDelay: `${String(500 + i * 150)}ms`,
-                    }}
-                  />
-                </span>
-                <span className="w-9 text-right font-semibold tabular-nums">
-                  <Count to={p.progress} on={on} suffix="%" />
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-      </div>
+      <Sidebar />
+      <DashboardCanvas on={on} />
     </div>
   );
 }
