@@ -61,3 +61,16 @@ body {
     @apply transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none;
   }
 }
+
+/* ==========================================================================
+   Desktop motion graphics (fx-*)
+   Every animation below runs only from lg up and only without
+   prefers-reduced-motion. Anything inside [data-fx-play="false"] is paused
+   (set by <PlayWhenVisible> when its region is off screen).
+   ========================================================================== */
+
+@property --fx-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
