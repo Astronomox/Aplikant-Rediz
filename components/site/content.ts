@@ -342,3 +342,35 @@ export const faqs = [
     a: "Yes. Generate donor-ready impact reports with completion rates, gender breakdowns, geographic data and learning outcomes. Growth adds AI-powered reports and CSV & PDF export, and Enterprise adds advanced AI-powered reports.",
   },
 ] as const;
+
+export const footer = {
+  blurb:
+    "Program management software for NGOs and social enterprises to run applications, track participants, measure attendance, and report impact.",
+  columns: [
+    {
+      title: "Product",
+      links: [
+        { label: "Features", href: "#features" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "FAQ", href: "#faq" },
+        { label: "Discover Programs", href: "#" },
+      ],
+    },
+    {
+      title: "Solutions",
+      links: [
+        { label: "Application Management", href: "#" },
+        { label: "M&E Platform", href: "#" },
+        { label: "Impact Reporting", href: "#" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Privacy Policy", href: "#" },
+        { label: "Terms of Service", href: "#" },
+      ],
+    },
+  ],
+  bottom: "Made with ❤️ for Growth & Impact",
+} as const;
