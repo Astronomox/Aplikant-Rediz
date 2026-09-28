@@ -67,12 +67,12 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
                 priority
                 className="-my-4 h-auto w-[104px] sm:w-[118px]"
               />
-            </a>
+            </Link>
             <nav className="hidden items-center gap-1 text-sm md:flex" aria-label="Primary">
               {nav.map((n) => {
                 const current = active === n.href;
                 return (
-                  <a
+                  <Link
                     key={n.label}
                     href={n.href}
                     aria-current={current ? "location" : undefined}
