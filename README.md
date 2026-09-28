@@ -37,7 +37,7 @@ components/
   site/                 Page sections (hero, platform, dark band, pricing, FAQ…)
     content.ts          All page copy in one place
     frame.tsx           Grid frame, pills, two-tone headings, button styles
-  hero/                 Program-engine motion graphic and lifecycle data
+  hero/                 Dashboard window and the hero product film
   features/             Animated feature icons and illustrations
   motion/               Reveal, scroll scenes, parallax, reduced-motion hook
   fx/                   Aurora, count-up, play-when-visible
@@ -49,5 +49,5 @@ public/                 Logos
 
 - **Palette:** navy `#0f172a`, gold `#f59e0b`, mint `#10b981`, cream `#f0fdf4`.
 - **Layout:** one framed column with hairline rails from header to footer; sections separated by full-width hairlines; content in bordered cells.
-- **Motion:** CSS for looping graphics (paused off screen), Framer Motion for scroll-linked and interactive motion, a canvas for the Möbius ribbon. Everything respects `prefers-reduced-motion`.
+- **Motion:** CSS for looping graphics (paused off screen), Framer Motion for scroll-linked and interactive motion and the hero product film, a canvas for the Möbius ribbon. Everything respects `prefers-reduced-motion`.
 - **Accessibility:** semantic landmarks, keyboard-operable tabs and accordions, visible focus, 40px+ touch targets on mobile.
