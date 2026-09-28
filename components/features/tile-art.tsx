@@ -103,3 +103,25 @@ export function ReportArt({ dark = false }: { dark?: boolean }) {
     </div>
   );
 }
+
+/** M&E Surveys: a "post" bar outgrows the "pre" bar. */
+export function PrePostArt() {
+  return (
+    <div className="w-[170px] space-y-3 text-[10px] font-semibold uppercase tracking-widest text-navy/45">
+      {[
+        { label: "Pre", width: "42%", color: "bg-navy/30", n: 0 },
+        { label: "Post", width: "88%", color: "bg-mint", n: 2 },
+      ].map((row) => (
+        <div key={row.label} className="flex items-center gap-2">
+          <span className="w-8">{row.label}</span>
+          <span className="relative h-3 flex-1 overflow-hidden rounded-full bg-navy/[0.07]">
+            <span
+              className={`fx-fill absolute inset-y-0 left-0 rounded-full ${row.color}`}
+              style={{ width: row.width, ...i(row.n) }}
+            />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
