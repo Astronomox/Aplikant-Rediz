@@ -38,7 +38,7 @@ export function SiteFooter() {
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <div className="flex gap-2.5 lg:justify-end">
-                <a href="#" className={BTN.gold}>
+                <a href="/sign-up" className={BTN.gold}>
                   Get Started for Free
                 </a>
                 <a href="#pricing" className={BTN.secondaryDark}>
