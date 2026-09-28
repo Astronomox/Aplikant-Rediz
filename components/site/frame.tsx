@@ -14,6 +14,7 @@ export type Tone = "light" | "paper" | "dark";
 
 const SECTION: Record<Tone, string> = {
   light: "bg-cream text-navy border-navy/10",
+  paper: "bg-white text-navy border-navy/10",
   dark: "bg-navy text-white border-white/10",
 };
 const RAILS: Record<Tone, string> = {
