@@ -171,6 +171,9 @@ export function DashboardWindow() {
                 <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-navy/55">
                   {s.label}
                 </p>
+                <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${s.chip}`}>
+                  <s.icon className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
               </div>
               <p className="-mt-1 text-2xl font-bold tracking-tight">
                 {s.value.toLocaleString("en-US")}
