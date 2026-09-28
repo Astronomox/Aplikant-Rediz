@@ -44,3 +44,16 @@ export function Section({
     </section>
   );
 }
+
+/** Small tinted label above a heading ("Platform", "Pricing"…). */
+export function Pill({ children, tone = "light" }: { children: ReactNode; tone?: Tone }) {
+  return (
+    <span
+      className={`inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium ${
+        tone === "dark" ? "bg-gold/15 text-gold" : "bg-navy/[0.07] text-navy/80"
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
