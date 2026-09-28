@@ -74,3 +74,9 @@ body {
   initial-value: 0deg;
   inherits: false;
 }
+
+[data-fx-play="false"] *,
+[data-fx-play="false"] *::before,
+[data-fx-play="false"] *::after {
+  animation-play-state: paused !important;
+}
