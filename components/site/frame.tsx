@@ -82,6 +82,59 @@ export const PAD = {
   y: "py-9 sm:py-14 lg:py-20",
 } as const;
 
+/** "01 · Platform": a section number and name, so the page reads as labelled parts. */
+export function Eyebrow({
+  index,
+  tone = "light",
+  children,
+}: {
+  index?: string;
+  tone?: Tone;
+  children: ReactNode;
+}) {
+  const dark = tone === "dark";
+  return (
+    <span className="inline-flex items-center gap-2 text-xs font-medium">
+      {index && (
+        <span
+          className={`flex h-5 min-w-5 items-center justify-center rounded px-1 font-mono text-[10px] ${
+            dark ? "bg-gold text-navy" : "bg-navy text-gold"
+          }`}
+        >
+          {index}
+        </span>
+      )}
+      <span className={dark ? "text-white/70" : "text-navy/60"}>{children}</span>
+    </span>
+  );
+}
+
+/** Top of a standalone page: eyebrow, page title, lede. */
+export function PageHero({
+  eyebrow,
+  title,
+  lede,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  lede: string;
+  children?: ReactNode;
+}) {
+  return (
+    <section className="relative border-b border-navy/10 bg-cream text-navy">
+      <div className={`${COLUMN} relative lg:border-x lg:border-navy/10`}>
+        <div className={`${PAD.x} pb-9 pt-10 sm:pb-12 sm:pt-16 lg:pb-16 lg:pt-20`}>
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h1 className={`mt-3 max-w-3xl sm:mt-4 ${TYPE.display}`}>{title}</h1>
+          <p className={`mt-3 max-w-2xl ${TYPE.lede} text-navy/55`}>{lede}</p>
+          {children}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /** Eyebrow + short heading + lede: the head of every section. */
 export function SectionHead({
   eyebrow,
