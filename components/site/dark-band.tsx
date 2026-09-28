@@ -8,6 +8,7 @@ import {
   Users,
   Video,
 } from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { DotGrid } from "@/components/texture/dot-grid";
 import { beyond, steps } from "./content";
