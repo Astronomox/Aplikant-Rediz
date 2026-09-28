@@ -3,12 +3,12 @@ import { Reveal } from "@/components/motion/reveal";
 import { DarkBand } from "@/components/site/dark-band";
 import { Faq } from "@/components/site/faq";
 import { Features } from "@/components/site/features";
-import { PAD, Section, SectionHead } from "@/components/site/frame";
+import { BTN, PAD, Section, SectionHead } from "@/components/site/frame";
 import { Hero } from "@/components/site/hero";
+import { PageShell } from "@/components/site/page-shell";
 import { Pricing } from "@/components/site/pricing";
 import { Scale } from "@/components/site/scale";
 import { Testimonials } from "@/components/site/testimonials";
-import { Reveal } from "@/components/motion/reveal";
 
 /*
  * Homepage. Construction after attio.com: one framed column with hairline rails from
