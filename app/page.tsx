@@ -22,6 +22,7 @@ export default function Home() {
       <Section id="features" tone="paper">
         <Reveal className={`${PAD.x} ${PAD.y} flex flex-wrap items-end justify-between gap-4`}>
           <SectionHead
+            index="01"
             eyebrow="Platform"
             title="Everything you need to run programs."
             lede="From applications to impact reports, Aplikant covers the full program lifecycle."
