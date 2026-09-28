@@ -31,7 +31,7 @@ export default function Home() {
             All features <span aria-hidden="true">→</span>
           </Link>
         </Reveal>
-        <Features />
+        <Features cell="bg-white" />
       </Section>
 
       <DarkBand />
