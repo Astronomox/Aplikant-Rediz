@@ -215,7 +215,7 @@ function MobileMenu({
           onClick={() => {
             onClose(false);
           }}
-          className="btn-gold flex h-12 items-center justify-center rounded-none text-[15px]"
+          className="btn-gold flex h-11 items-center justify-center rounded-none text-sm"
         >
           Sign up free
         </a>
