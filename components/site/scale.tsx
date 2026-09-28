@@ -51,6 +51,7 @@ export function Scale({ index }: { index?: string }) {
       <div className={`relative ${PAD.x} pb-24 pt-9 sm:pb-32 sm:pt-14 lg:pb-40 lg:pt-20`}>
         <Reveal>
           <SectionHead
+            index={index}
             eyebrow="At any scale"
             title="Built for programs at any scale."
             lede="From one bootcamp to a multi-program network."
