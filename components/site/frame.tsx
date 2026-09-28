@@ -169,12 +169,12 @@ export function SectionHead({
 /** Attio-sized action buttons: compact, 36-40px tall, square corners by design. */
 export const BTN = {
   primary:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none bg-navy px-4 text-sm font-medium text-white shadow-sm hover:bg-navy/90",
-  gold: "btn-gold inline-flex h-10 items-center justify-center gap-1.5 rounded-none px-4 text-sm",
+    "btn-press inline-flex h-9 items-center sm:h-10 justify-center gap-1.5 rounded-none bg-navy px-4 text-sm font-medium text-white shadow-sm hover:bg-navy/90",
+  gold: "btn-gold inline-flex h-9 items-center sm:h-10 justify-center gap-1.5 rounded-none px-4 text-sm",
   secondary:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none border border-navy/15 bg-white px-4 text-sm font-medium text-navy shadow-sm hover:bg-navy/[0.03]",
+    "btn-press inline-flex h-9 items-center sm:h-10 justify-center gap-1.5 rounded-none border border-navy/15 bg-white px-4 text-sm font-medium text-navy shadow-sm hover:bg-navy/[0.03]",
   secondaryDark:
-    "btn-press inline-flex h-10 items-center justify-center gap-1.5 rounded-none border border-white/15 bg-white/[0.04] px-4 text-sm font-medium text-white hover:bg-white/10",
+    "btn-press inline-flex h-9 items-center sm:h-10 justify-center gap-1.5 rounded-none border border-white/15 bg-white/[0.04] px-4 text-sm font-medium text-white hover:bg-white/10",
   small:
     "btn-press group inline-flex h-8 items-center gap-1 rounded-none border border-navy/15 bg-white/70 px-2.5 text-xs font-medium text-navy hover:bg-white",
   smallDark:
