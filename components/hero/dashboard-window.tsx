@@ -103,6 +103,12 @@ const STATUS = [
   { label: "Completed", value: 1, color: "bg-navy/70" },
 ] as const;
 
+const PROGRAMS = [
+  { name: "Tech Founders Bootcamp", type: "Bootcamp", progress: 65 },
+  { name: "Women in STEM Fellowship", type: "Fellowship", progress: 32 },
+  { name: "Youth Civic Fellowship", type: "Fellowship", progress: 18 },
+] as const;
+
 /** Counts from 0 to `to` once `on` flips true. */
 function Count({ to, on, suffix = "" }: { to: number; on: boolean; suffix?: string }) {
   const [v, setV] = useState(on ? to : 0);
@@ -321,6 +327,28 @@ export function DashboardWindow() {
             </div>
           </Card>
         </div>
+
+        {/* Active programs */}
+        <Card className="mt-3 p-4">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold">Active Programs</p>
+            <p className="text-[10px] font-medium text-navy/45">View all</p>
+          </div>
+          <ul className="mt-3 space-y-3">
+            {PROGRAMS.map((p) => (
+              <li key={p.name} className="flex items-center gap-3 text-[11px]">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-navy text-gold">
+                  <FolderKanban className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-semibold">{p.name}</span>
+                  <span className="text-[10px] text-navy/50">{p.type}</span>
+                </span>
+                <span className="w-9 text-right font-semibold tabular-nums">{p.progress}%</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </div>
     </div>
   );
