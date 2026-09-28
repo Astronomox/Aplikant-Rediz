@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
 import { DotGrid } from "@/components/texture/dot-grid";
 import { testimonials } from "./content";
-import { Pill } from "./frame";
+import { Eyebrow, TYPE } from "./frame";
 
 /*
  * Testimonials, after Attio's serif pull-quote + customer logo tabs.
