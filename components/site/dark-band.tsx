@@ -139,7 +139,6 @@ export function DarkBand({ index }: { index?: string }) {
   return (
     <section id="how-it-works" className="relative border-b border-white/10 bg-navy text-white">
       <div className={`${COLUMN} relative lg:border-x lg:border-white/10`}>
-        {/* 1. Heading + horizon */}
         <div className="relative">
           <DotGrid id="band-grid" fade="top" />
           <Reveal className={`relative ${PAD.x} pt-12 text-center sm:pt-20 lg:pt-24`}>
