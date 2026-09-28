@@ -192,3 +192,23 @@ body {
     transform: scaleX(0);
   }
 }
+@keyframes fx-pop {
+  0%,
+  45% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  62%,
+  85% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
