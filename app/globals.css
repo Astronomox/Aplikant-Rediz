@@ -240,3 +240,16 @@ body {
     transform: scaleY(0.08);
   }
 }
+@keyframes fx-ring {
+  0%,
+  10% {
+    stroke-dashoffset: 100;
+  }
+  45%,
+  80% {
+    stroke-dashoffset: 28;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
