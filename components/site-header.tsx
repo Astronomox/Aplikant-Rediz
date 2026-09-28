@@ -135,6 +135,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
 function MobileMenu({
   nav,
   active,
+  top,
   onClose,
 }: {
   nav: readonly NavItem[];
