@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 /*
  * Page frame, after Attio's construction: the page is a drawn grid, not stacked bands.
  *   - Every section spans the full width with a hairline on its bottom edge.
@@ -8,3 +10,37 @@
  */
 
 export type Tone = "light" | "dark";
+
+const SECTION: Record<Tone, string> = {
+  light: "bg-cream text-navy border-navy/10",
+  dark: "bg-navy text-white border-white/10",
+};
+const RAILS: Record<Tone, string> = {
+  light: "lg:border-navy/10",
+  dark: "lg:border-white/10",
+};
+
+/** Width of the framed column (Attio's is ~1160px). */
+export const COLUMN = "mx-auto w-full max-w-[72.5rem]";
+
+export function Section({
+  tone = "light",
+  id,
+  className = "",
+  innerClassName = "",
+  children,
+}: {
+  tone?: Tone;
+  id?: string;
+  className?: string;
+  innerClassName?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className={`relative border-b ${SECTION[tone]} ${className}`}>
+      <div className={`${COLUMN} relative lg:border-x ${RAILS[tone]} ${innerClassName}`}>
+        {children}
+      </div>
+    </section>
+  );
+}
