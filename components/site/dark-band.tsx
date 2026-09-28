@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { DotGrid } from "@/components/texture/dot-grid";
 import { beyond, steps } from "./content";
-import { BTN, COLUMN, PAD, Pill, SectionHead, TYPE } from "./frame";
+import { BTN, COLUMN, Eyebrow, PAD, SectionHead, TYPE } from "./frame";
 
 /*
  * The dark band (after Attio's "Universal Context" section).
