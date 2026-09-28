@@ -2,10 +2,13 @@
 
 import {
   BarChart3,
+  Bell,
   CalendarCheck,
   FileText,
   FolderKanban,
+  Headphones,
   LayoutDashboard,
+  Settings,
   SquareActivity,
   Users,
   Video,
@@ -85,6 +88,18 @@ export function DashboardWindow() {
             </div>
           ))}
         </nav>
+        <ul className="mt-auto space-y-0.5 border-t border-white/10 pt-3 text-[11px] font-medium text-white/60">
+          {[
+            { label: "Notifications", icon: Bell },
+            { label: "Support", icon: Headphones },
+            { label: "Settings", icon: Settings },
+          ].map((it) => (
+            <li key={it.label} className="flex items-center gap-2 px-2 py-1.5">
+              <it.icon className="h-3.5 w-3.5" aria-hidden="true" />
+              {it.label}
+            </li>
+          ))}
+        </ul>
       </aside>
     </div>
   );
