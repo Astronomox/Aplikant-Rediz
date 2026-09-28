@@ -162,3 +162,23 @@ export const steps = [
     body: "Generate beautiful reports for funders and stakeholders with completion rates, demographics, outcomes, and more.",
   },
 ] as const;
+
+/** Growth+ capabilities, from the pricing page. Drives the "more than applications" list. */
+export const beyond = [
+  {
+    title: "Courses & assessments",
+    body: "A learning management system with courses, an assessment builder, a gradebook and email delivery.",
+  },
+  {
+    title: "Certificates",
+    body: "Certificate templates and certificate email campaigns to every graduate.",
+  },
+  {
+    title: "Competitions & hackathons",
+    body: "Run pitch competitions with judges, private judging results and score exports, and hackathons.",
+  },
+  {
+    title: "Live & recorded sessions",
+    body: "Video sessions for every program: 10 per program on Growth, unlimited on Enterprise.",
+  },
+] as const;
