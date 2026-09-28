@@ -309,3 +309,36 @@ export const plans: Plan[] = [
     ],
   },
 ];
+
+export const faqs = [
+  {
+    q: "Is Aplikant really free forever?",
+    // From the Free plan: "no card and no expiry", unlimited programs + participants.
+    a: "Yes. The Free plan needs no card and has no expiry. It includes unlimited programs and unlimited participants, application forms, attendance tracking, M&E surveys and a branded public page. Upgrade only when you need more.",
+  },
+  {
+    q: "What types of programs can I manage?",
+    // From the features and Growth plan copy.
+    a: "Training, bootcamps, fellowships and workshops, with tracks and sub-programs. On Growth and above you can also run courses and assessments, pitch competitions with judges, and hackathons.",
+  },
+  {
+    q: "How does the application form builder work?",
+    // From Smart Applications + Free plan copy.
+    a: "Build custom forms with drag-and-drop or start from a form template, then share a branded application link. Responses flow into your dashboard for review, scoring and shortlisting. Forms can be free or paid, with paid applications collected via Paystack (a platform fee applies).",
+  },
+  {
+    q: "Can multiple team members use Aplikant?",
+    // From the plan limits and Role-Based Access copy.
+    a: "Yes. Free includes 1 team member, Growth up to 10, Enterprise up to 20, and Custom unlimited. Role-based access gives everyone the right level, from field staff taking attendance to org admins, and Enterprise adds per-form reviewer invites.",
+  },
+  {
+    q: "Is my data secure?",
+    // Verbatim from the site.
+    a: "Yes. We use industry-standard encryption, secure cloud infrastructure, and role-based access controls to protect your data. Your participant information is safe with us.",
+  },
+  {
+    q: "Can I generate reports for funders and donors?",
+    // From Impact Reports + plan copy.
+    a: "Yes. Generate donor-ready impact reports with completion rates, gender breakdowns, geographic data and learning outcomes. Growth adds AI-powered reports and CSV & PDF export, and Enterprise adds advanced AI-powered reports.",
+  },
+] as const;
