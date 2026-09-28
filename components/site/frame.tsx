@@ -27,20 +27,16 @@ export function Section({
   tone = "light",
   id,
   className = "",
-  innerClassName = "",
   children,
 }: {
   tone?: Tone;
   id?: string;
   className?: string;
-  innerClassName?: string;
   children: ReactNode;
 }) {
   return (
     <section id={id} className={`relative border-b ${SECTION[tone]} ${className}`}>
-      <div className={`${COLUMN} relative lg:border-x ${RAILS[tone]} ${innerClassName}`}>
-        {children}
-      </div>
+      <div className={`${COLUMN} relative lg:border-x ${RAILS[tone]}`}>{children}</div>
     </section>
   );
 }
