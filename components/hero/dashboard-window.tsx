@@ -2,6 +2,7 @@
 
 import { animate, useInView } from "framer-motion";
 import {
+  Accessibility,
   BarChart3,
   Bell,
   CalendarCheck,
@@ -14,6 +15,7 @@ import {
   Settings,
   SquareActivity,
   TrendingUp,
+  UserRound,
   Users,
   Video,
   type LucideIcon,
@@ -89,6 +91,12 @@ const STATS = [
   },
 ] as const;
 
+const DEMOGRAPHICS = [
+  { label: "Females", value: 684, color: "#e11d48", icon: UserRound },
+  { label: "Males", value: 541, color: "#3b82f6", icon: UserRound },
+  { label: "PLWDs", value: 22, color: "#10b981", icon: Accessibility },
+] as const;
+
 /** Counts from 0 to `to` once `on` flips true. */
 function Count({ to, on, suffix = "" }: { to: number; on: boolean; suffix?: string }) {
   const [v, setV] = useState(on ? to : 0);
@@ -110,6 +118,51 @@ function Count({ to, on, suffix = "" }: { to: number; on: boolean; suffix?: stri
       {v.toLocaleString("en-US")}
       {suffix}
     </span>
+  );
+}
+
+const ease =
+  "transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none";
+
+function Donut({ on }: { on: boolean }) {
+  const total = DEMOGRAPHICS.reduce((s, d) => s + d.value, 0);
+  const R = 15.915; // circumference = 100
+  let offset = 25; // start at 12 o'clock
+  return (
+    <svg viewBox="0 0 42 42" className="h-24 w-24 shrink-0 -rotate-0" aria-hidden="true">
+      <circle
+        cx="21"
+        cy="21"
+        r={R}
+        fill="none"
+        stroke="#0f172a"
+        strokeOpacity={0.07}
+        strokeWidth="6"
+      />
+      {DEMOGRAPHICS.map((d, i) => {
+        const pct = (d.value / total) * 100;
+        const el = (
+          <circle
+            key={d.label}
+            cx="21"
+            cy="21"
+            r={R}
+            fill="none"
+            stroke={d.color}
+            strokeWidth="6"
+            strokeDasharray={`${on ? String(Math.max(pct - 1, 0.6)) : "0"} 100`}
+            strokeDashoffset={offset}
+            className={ease}
+            style={{ transitionDelay: `${String(200 + i * 150)}ms` }}
+          />
+        );
+        offset -= pct;
+        return el;
+      })}
+      <text x="21" y="22.5" textAnchor="middle" className="fill-navy text-[5px] font-semibold">
+        {total.toLocaleString("en-US")}
+      </text>
+    </svg>
   );
 }
 
@@ -219,6 +272,16 @@ export function DashboardWindow() {
               </span>
             </Card>
           ))}
+        </div>
+
+        {/* Charts */}
+        <div className="mt-3 hidden gap-3 lg:grid lg:grid-cols-2">
+          <Card className="p-4">
+            <p className="text-xs font-semibold">Participant Demographics</p>
+            <div className="mt-3 flex items-center gap-5">
+              <Donut on={on} />
+            </div>
+          </Card>
         </div>
       </div>
     </div>
