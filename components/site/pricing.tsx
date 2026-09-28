@@ -77,7 +77,7 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
         </p>
 
         <a
-          href="#"
+          href={p.tier === "Custom" ? "#" : "/sign-up"}
           className={`mt-4 w-full sm:mt-5 ${dark ? BTN.gold : p.tier === "Custom" ? BTN.primary : BTN.secondary}`}
         >
           {p.cta}
