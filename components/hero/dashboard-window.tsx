@@ -165,7 +165,7 @@ export function DashboardWindow() {
 
         {/* Stats */}
         <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3">
-          {STATS.map((s) => (
+          {STATS.map((s, i) => (
             <Card key={s.label} className="p-3">
               <div className="flex items-start justify-between">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-navy/55">
@@ -179,6 +179,13 @@ export function DashboardWindow() {
                 {s.value.toLocaleString("en-US")}
                 {s.suffix}
               </p>
+              <span
+                className={`mt-1 inline-block rounded-full px-1.5 py-0.5 text-[9px] font-medium ${
+                  i === 1 ? "bg-mint/15 text-[#047857]" : "bg-navy/[0.06] text-navy/60"
+                }`}
+              >
+                {s.pill}
+              </span>
             </Card>
           ))}
         </div>
