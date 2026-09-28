@@ -151,3 +151,46 @@ export function ProgramStackArt() {
     </div>
   );
 }
+
+/**
+ * Role-Based Access: an org admin fans access out to reviewers and field staff.
+ * Roles are the ones the site names (org admins, per-form reviewers, field staff).
+ */
+export function RolesArt() {
+  const chip =
+    "rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-navy shadow-sm ring-1 ring-navy/10";
+  return (
+    <div className="relative flex w-[300px] flex-col items-center">
+      <span className={`${chip} flex items-center gap-1.5`}>
+        <span className="h-2 w-2 rounded-full bg-gold" /> Org admin
+      </span>
+      <svg viewBox="0 0 300 56" className="h-14 w-full" fill="none" aria-hidden="true">
+        {[60, 150, 240].map((x) => (
+          <g key={x}>
+            <path
+              d={`M150 0 C150 28, ${String(x)} 28, ${String(x)} 56`}
+              stroke="#0f172a"
+              strokeOpacity={0.15}
+            />
+            <path
+              d={`M150 0 C150 28, ${String(x)} 28, ${String(x)} 56`}
+              stroke="#f59e0b"
+              strokeWidth={1.5}
+              pathLength={100}
+              strokeDasharray="14 86"
+              strokeDashoffset={100}
+              strokeLinecap="round"
+              className="fx-dash"
+              style={{ animationDelay: `${String(-x / 150)}s` }}
+            />
+          </g>
+        ))}
+      </svg>
+      <div className="flex w-full justify-between">
+        <span className={chip}>Reviewer</span>
+        <span className={chip}>Team member</span>
+        <span className={chip}>Field staff</span>
+      </div>
+    </div>
+  );
+}
