@@ -102,7 +102,8 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
   );
 }
 
-export function Pricing() {
+/** `head={false}` drops the section heading (the /pricing page has its own). */
+export function Pricing({ index, head = true }: { index?: string; head?: boolean }) {
   return (
     <>
       <div className={`grid gap-5 ${PAD.x} ${PAD.y} lg:grid-cols-12 lg:items-end`}>
