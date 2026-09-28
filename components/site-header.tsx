@@ -89,13 +89,13 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
 
           <div className="flex items-center gap-2">
             <a
-              href="#"
+              href="/sign-in"
               className="btn-press hidden h-9 items-center rounded-none border border-navy/15 bg-white px-3.5 text-sm font-medium text-navy shadow-sm hover:bg-navy/[0.03] md:inline-flex"
             >
               Sign in
             </a>
             <a
-              href="#"
+              href="/sign-up"
               className="btn-press inline-flex h-9 items-center rounded-none bg-navy px-3.5 text-sm font-medium text-white shadow-sm hover:bg-navy/90"
             >
               <span className="md:hidden">Sign up</span>
