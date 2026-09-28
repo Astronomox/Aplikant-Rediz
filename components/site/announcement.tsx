@@ -10,8 +10,8 @@ export function Announcement() {
   return (
     <div className="relative bg-[#0a1020] text-white">
       <a
-        href="#pricing"
-        className="group mx-auto flex h-10 max-w-[72.5rem] items-center justify-center gap-1.5 px-12 text-center text-[13px] font-medium"
+        href="/pricing"
+        className="group mx-auto flex h-8 max-w-[72.5rem] items-center justify-center gap-1.5 px-10 text-center text-xs font-medium sm:h-10 sm:px-12 sm:text-[13px]"
       >
         <span className="truncate">
           <span className="text-gold">New</span> · Run pitch competitions & hackathons on Growth
