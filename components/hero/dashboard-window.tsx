@@ -8,6 +8,7 @@ import {
   FolderKanban,
   Headphones,
   LayoutDashboard,
+  Plus,
   Settings,
   SquareActivity,
   Users,
@@ -101,6 +102,19 @@ export function DashboardWindow() {
           ))}
         </ul>
       </aside>
+
+      {/* Canvas */}
+      <div className="relative min-w-0 flex-1 overflow-hidden bg-[linear-gradient(135deg,#dbe9fb_0%,#eef3ef_40%,#f6eee4_70%,#f8e3ec_100%)] p-4 lg:p-6">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-lg font-semibold tracking-tight lg:text-xl">Dashboard</p>
+            <p className="text-[11px] text-navy/55">Overview of your programs and activities</p>
+          </div>
+          <span className="flex items-center gap-1 rounded-md bg-navy px-2.5 py-1.5 text-[11px] font-semibold text-white">
+            <Plus className="h-3 w-3" aria-hidden="true" /> New Program
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
