@@ -125,3 +125,29 @@ export function PrePostArt() {
     </div>
   );
 }
+
+/** Program Management (How It Works step 1): three program cards fanning out. */
+export function ProgramStackArt() {
+  return (
+    <div className="relative h-[110px] w-[190px]">
+      {[2, 1, 0].map((n) => (
+        <div
+          key={n}
+          className="absolute inset-x-0 top-0 rounded-xl bg-white p-3 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.5)] ring-1 ring-navy/10"
+          style={{
+            transform: `translate(${String(n * 14)}px, ${String(n * 14)}px) rotate(${String(n * -3)}deg)`,
+            opacity: 1 - n * 0.2,
+          }}
+        >
+          <span className="block h-1.5 w-16 rounded-full bg-navy/60" />
+          <span className="mt-2 block h-1.5 w-24 rounded-full bg-navy/15" />
+          <span className="mt-1.5 block h-1.5 w-20 rounded-full bg-navy/15" />
+          <span className="mt-3 flex gap-1">
+            <span className="h-3 w-8 rounded bg-gold/70" />
+            <span className="h-3 w-8 rounded bg-mint/40" />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
