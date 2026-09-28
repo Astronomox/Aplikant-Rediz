@@ -224,7 +224,7 @@ function MobileMenu({
           onClick={() => {
             onClose(false);
           }}
-          className="btn-press flex h-12 items-center justify-center rounded-none border border-white/20 text-[15px] font-medium hover:bg-white/5"
+          className="btn-press flex h-11 items-center justify-center rounded-none border border-white/20 text-sm font-medium hover:bg-white/5"
         >
           Sign in
         </a>
