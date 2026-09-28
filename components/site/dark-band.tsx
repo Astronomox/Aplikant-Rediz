@@ -19,6 +19,7 @@ import { BTN, COLUMN, Eyebrow, PAD, SectionHead, TYPE } from "./frame";
  *   1. Heading over a glowing horizon arc: a planet edge with a gold -> mint rim light.
  *   2. The four steps as a hairline cell row.
  *   3. "More than applications": the Growth-plan capabilities as a four-cell grid.
+ * Steps and Beyond are exported separately for the /how-it-works and /features pages.
  */
 
 const STEP_ICONS = [FolderPlus, ClipboardList, Users, ChartColumn];
