@@ -38,3 +38,104 @@ export interface Feature {
   /** Two supporting cells, all from the site's feature and pricing copy. */
   cells: [{ lead: string; rest: string }, { lead: string; rest: string }];
 }
+
+export const features: Feature[] = [
+  {
+    key: "programs",
+    tab: "Program management",
+    lead: "Every program, one place.",
+    rest: "Create and manage training, bootcamps, fellowships, and workshops from a single dashboard. Set milestones, track cohorts, and never lose sight of progress.",
+    cells: [
+      {
+        lead: "Unlimited, on every plan.",
+        rest: "Unlimited programs and unlimited participants, including on Free.",
+      },
+      {
+        lead: "Tracks and sub-programs.",
+        rest: "Split a program into tracks, with filters across attendance, email and certificates.",
+      },
+    ],
+  },
+  {
+    key: "applications",
+    tab: "Smart applications",
+    lead: "Applications without the spreadsheet.",
+    rest: "Build custom application forms with drag-and-drop, collect responses, score candidates, and shortlist without touching a spreadsheet.",
+    cells: [
+      {
+        lead: "Free or paid.",
+        rest: "Collect application fees via Paystack, or keep applications free.",
+      },
+      {
+        lead: "Start from a template.",
+        rest: "Form templates, a branded public page, and admin edits on any application.",
+      },
+    ],
+  },
+  {
+    key: "participants",
+    tab: "Participant tracking",
+    lead: "See every cohort, live.",
+    rest: "Track attendance, engagement, demographics, and progress across every cohort in real time with beautiful visual dashboards.",
+    cells: [
+      {
+        lead: "Attendance, manual or QR.",
+        rest: "Reopen or regenerate a QR session, and check in minors with their guardians.",
+      },
+      {
+        lead: "An ID for every participant.",
+        rest: "Each participant gets a unique participant ID in the APK-XXXXXX format.",
+      },
+    ],
+  },
+  {
+    key: "reports",
+    tab: "Impact reports",
+    lead: "Donor-ready in one click.",
+    rest: "Generate donor-ready reports with completion rates, gender breakdowns, geographic data, and learning outcomes at the click of a button.",
+    ai: true,
+    cells: [
+      {
+        lead: "AI-powered reports.",
+        rest: "Basic AI reports on Growth, advanced AI reports on Enterprise.",
+      },
+      {
+        lead: "Export anything.",
+        rest: "Data export to CSV and PDF, ready for funders and stakeholders.",
+      },
+    ],
+  },
+  {
+    key: "surveys",
+    tab: "M&E surveys",
+    lead: "Prove your programs work.",
+    rest: "Deploy pre/post surveys, collect feedback, and measure program effectiveness with built-in analytics and response tracking.",
+    ai: true,
+    cells: [
+      {
+        lead: "Pre and post.",
+        rest: "Deploy surveys before and after a program, with response tracking built in.",
+      },
+      {
+        lead: "Included on Free.",
+        rest: "M&E survey data collection is part of the Free plan.",
+      },
+    ],
+  },
+  {
+    key: "access",
+    tab: "Role-based access",
+    lead: "The right access for everyone.",
+    rest: "Give your team the right level of access, from field staff taking attendance to org admins managing everything.",
+    cells: [
+      {
+        lead: "Scoped reviewers.",
+        rest: "Invite reviewers to a single form with scoped admin on Enterprise.",
+      },
+      {
+        lead: "Grows with your team.",
+        rest: "From 1 member on Free to 10 on Growth, 20 on Enterprise, unlimited on Custom.",
+      },
+    ],
+  },
+];
