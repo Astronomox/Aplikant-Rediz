@@ -154,7 +154,7 @@ function Panel({ feature: f, index }: { feature: Feature; index: number }) {
         }`}
       >
         <DotGrid id={`art-${f.key}`} tone={darkArt ? "dark" : "light"} fade="radial" />
-        <div aria-hidden="true" className={`relative ${darkArt ? "" : "lg:scale-[1.45]"}`}>
+        <div aria-hidden="true" className="relative max-w-full">
           <TileArt icon={f.key} />
         </div>
       </div>
