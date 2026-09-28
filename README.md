@@ -49,5 +49,5 @@ public/                 Logos
 
 - **Palette:** navy `#0f172a`, gold `#f59e0b`, mint `#10b981`, cream `#f0fdf4`.
 - **Layout:** one framed column with hairline rails from header to footer; sections separated by full-width hairlines; content in bordered cells.
-- **Motion:** CSS for looping graphics (paused off screen), Framer Motion for scroll-linked and interactive motion and the hero product film, a canvas for the Möbius ribbon. Everything respects `prefers-reduced-motion`.
+- **Motion:** CSS for looping graphics (paused off screen), Framer Motion for scroll-linked and interactive motion and the hero product film. Everything respects `prefers-reduced-motion`.
 - **Accessibility:** semantic landmarks, keyboard-operable tabs and accordions, visible focus, 40px+ touch targets on mobile.
