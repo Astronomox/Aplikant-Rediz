@@ -141,9 +141,11 @@ export function DarkBand({ index }: { index?: string }) {
       <div className={`${COLUMN} relative lg:border-x lg:border-white/10`}>
         <div className="relative">
           <DotGrid id="band-grid" fade="top" />
-          <Reveal className={`relative ${PAD.x} pt-12 text-center sm:pt-20 lg:pt-24`}>
-            <Pill tone="dark">How it works</Pill>
-            <h2 className={`mt-4 ${TYPE.display}`}>Up and running in minutes</h2>
+          <Reveal className={`relative ${PAD.x} pt-10 text-center sm:pt-16 lg:pt-24`}>
+            <Eyebrow tone="dark" index={index}>
+              How it works
+            </Eyebrow>
+            <h2 className={`mt-3 sm:mt-4 ${TYPE.display}`}>Up and running in minutes</h2>
             <p className={`mx-auto mt-3 max-w-md ${TYPE.lede} text-white/55`}>
               Four simple steps to transform how you manage programs.
             </p>
