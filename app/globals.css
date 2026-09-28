@@ -96,3 +96,12 @@ body {
     transform: rotate(-360deg);
   }
 }
+@keyframes fx-aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12%, 8%) scale(1.15);
+  }
+}
