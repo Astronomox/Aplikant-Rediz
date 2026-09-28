@@ -106,21 +106,24 @@ function PlanCell({ plan: p, index }: { plan: Plan; index: number }) {
 export function Pricing({ index, head = true }: { index?: string; head?: boolean }) {
   return (
     <>
-      <div className={`grid gap-5 ${PAD.x} ${PAD.y} lg:grid-cols-12 lg:items-end`}>
-        <Reveal className="lg:col-span-7">
-          <SectionHead
-            eyebrow="Pricing"
-            title="Simple, transparent pricing."
-            lede="Start free forever. Upgrade when you're ready to grow."
-          />
-        </Reveal>
-        <Reveal className="lg:col-span-4 lg:col-start-9 lg:text-right">
-          <a href="#" className={BTN.small}>
-            Compare all plans &amp; features
-            <ArrowRight className="arrow-nudge h-3 w-3" aria-hidden="true" />
-          </a>
-        </Reveal>
-      </div>
+      {head && (
+        <div className={`grid gap-5 ${PAD.x} ${PAD.y} lg:grid-cols-12 lg:items-end`}>
+          <Reveal className="lg:col-span-7">
+            <SectionHead
+              index={index}
+              eyebrow="Pricing"
+              title="Simple, transparent pricing."
+              lede="Start free forever. Upgrade when you're ready to grow."
+            />
+          </Reveal>
+          <Reveal className="lg:col-span-4 lg:col-start-9 lg:text-right">
+            <a href="/pricing#compare" className={BTN.small}>
+              Compare all plans &amp; features
+              <ArrowRight className="arrow-nudge h-3 w-3" aria-hidden="true" />
+            </a>
+          </Reveal>
+        </div>
+      )}
       <div className="grid border-t border-navy/10 sm:grid-cols-2 lg:grid-cols-4">
         {plans.map((p, i) => (
           <PlanCell key={p.tier} plan={p} index={i} />
