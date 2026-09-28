@@ -15,7 +15,7 @@ import { PAD, SectionHead } from "./frame";
 
 const CURVE = "M0 380 C 380 378, 620 330, 820 250 S 1080 60, 1160 0";
 
-export function Scale() {
+export function Scale({ index }: { index?: string }) {
   const reduced = usePrefersReducedMotion();
   return (
     <div className="relative overflow-hidden">
