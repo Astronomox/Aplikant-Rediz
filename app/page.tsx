@@ -51,8 +51,6 @@ export default function Home() {
       <Section id="faq" tone="paper">
         <Faq index="06" />
       </Section>
-
-      <SiteFooter />
-    </main>
+    </PageShell>
   );
 }
