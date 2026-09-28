@@ -85,3 +85,9 @@ body {
 .fx-border {
   background: rgb(245 158 11 / 0.4);
 }
+
+@keyframes fx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
