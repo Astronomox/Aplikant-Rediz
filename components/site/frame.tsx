@@ -87,3 +87,6 @@ export function TwoTone({
     </Tag>
   );
 }
+
+/** Section-heading scale shared by every section. */
+export const H2 = "text-[1.75rem] leading-[1.12] sm:text-4xl lg:text-[2.625rem]";
