@@ -55,7 +55,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
           scrolled || menuOpen ? "shadow-[0_6px_20px_-14px_rgba(15,23,42,0.35)]" : ""
         }`}
       >
-        <div className={`${COLUMN} flex h-16 items-center justify-between px-5 lg:px-8`}>
+        <div className={`${COLUMN} flex h-14 items-center justify-between px-5 sm:h-16 lg:px-8`}>
           <div className="flex items-center gap-8">
             <a href="#" aria-label="Aplikant home" className="flex h-11 items-center">
               {/* 2:1 wordmark with built-in padding; negative margin trims it */}
