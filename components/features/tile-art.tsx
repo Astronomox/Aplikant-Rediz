@@ -1,4 +1,6 @@
 import type { CSSProperties } from "react";
+import type { FeatureKey as FeatureIconName } from "@/components/site/content";
+import { UnlimitedRibbon } from "./unlimited-ribbon";
 
 /*
  * Small looping illustrations for the feature tiles and How It Works cards.
@@ -193,4 +195,22 @@ export function RolesArt() {
       </div>
     </div>
   );
+}
+
+/** Art per feature tile. */
+export function TileArt({ icon }: { icon: FeatureIconName }) {
+  switch (icon) {
+    case "programs":
+      return <UnlimitedRibbon />;
+    case "applications":
+      return <FormArt />;
+    case "participants":
+      return <CheckInArt />;
+    case "reports":
+      return <ReportArt />;
+    case "surveys":
+      return <PrePostArt />;
+    case "access":
+      return <RolesArt />;
+  }
 }
