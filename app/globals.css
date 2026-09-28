@@ -126,3 +126,8 @@ body {
     filter: blur(0);
   }
 }
+@keyframes fx-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
