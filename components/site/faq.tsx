@@ -62,6 +62,7 @@ export function Faq({ index, head = true }: { index?: string; head?: boolean }) 
       <div className={`border-b border-navy/10 ${PAD.x} ${PAD.y} lg:border-b-0 lg:border-r`}>
         <Reveal className="lg:sticky lg:top-28">
           <SectionHead
+            index={index}
             eyebrow="FAQ"
             title="Frequently asked questions."
             lede="Everything you need to know about Aplikant."
