@@ -182,3 +182,27 @@ export const beyond = [
     body: "Video sessions for every program: 10 per program on Growth, unlimited on Enterprise.",
   },
 ] as const;
+
+export const testimonials = [
+  {
+    quote: "Aplikant replaced 6 different tools we were using.",
+    rest: "Our reporting time dropped from 2 weeks to 2 hours.",
+    name: "Amina Okafor",
+    role: "Program Director",
+    org: "Lagos Innovation Hub",
+  },
+  {
+    quote: "We used to lose track of participants between cohorts.",
+    rest: "Now everything is in one place and our funders love the reports.",
+    name: "David Kimani",
+    role: "Operations Manager",
+    org: "Nairobi Tech Hub",
+  },
+  {
+    quote: "The survey and M&E features alone are worth it.",
+    rest: "We can now actually prove our programs work with real data.",
+    name: "Fatima Bello",
+    role: "M&E Lead",
+    org: "Abuja Social Impact Lab",
+  },
+] as const;
