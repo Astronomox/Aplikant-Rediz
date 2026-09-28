@@ -48,7 +48,7 @@ export function Scale({ index }: { index?: string }) {
         />
       </svg>
 
-      <div className={`relative ${PAD.x} pb-28 pt-12 sm:pb-36 sm:pt-16 lg:pb-44 lg:pt-20`}>
+      <div className={`relative ${PAD.x} pb-24 pt-9 sm:pb-32 sm:pt-14 lg:pb-40 lg:pt-20`}>
         <Reveal>
           <SectionHead
             eyebrow="At any scale"
