@@ -91,3 +91,8 @@ body {
     transform: rotate(360deg);
   }
 }
+@keyframes fx-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
