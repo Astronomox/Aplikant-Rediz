@@ -39,3 +39,19 @@ export function FormArt({ dark = false }: { dark?: boolean }) {
     </div>
   );
 }
+
+/** Participant Tracking: a cohort grid checking in. */
+const CHECKIN_ORDER = [3, 9, 1, 12, 6, 0, 14, 7, 10, 4, 13, 2, 8, 11, 5];
+export function CheckInArt({ dark = false }: { dark?: boolean }) {
+  return (
+    <div className="grid w-[150px] grid-cols-5 gap-2">
+      {CHECKIN_ORDER.map((order, n) => (
+        <span
+          key={n}
+          className={`fx-checkin h-5 w-5 rounded-full ${dark ? "bg-white/10" : "bg-navy/[0.08]"}`}
+          style={i(order)}
+        />
+      ))}
+    </div>
+  );
+}
