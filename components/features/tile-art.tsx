@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
-import type { FeatureKey as FeatureIconName } from "@/components/site/content";
+import type { FeatureKey } from "@/components/site/content";
 import { UnlimitedRibbon } from "./unlimited-ribbon";
 
 /*
- * Small looping illustrations for the feature tiles and How It Works cards.
+ * Small looping illustrations for the platform feature panels.
  * Abstract on purpose: no names, numbers or fake product data, just the *idea*
  * of each capability in motion. Animations are the fx-* classes in globals.css
  * (lg+ only, off under reduced motion, paused off screen); without them each
@@ -13,17 +13,14 @@ import { UnlimitedRibbon } from "./unlimited-ribbon";
 const i = (n: number) => ({ "--i": n }) as CSSProperties;
 
 /** Smart Applications: form fields fill in, then a check pops. */
-export function FormArt({ dark = false }: { dark?: boolean }) {
-  const track = dark ? "bg-white/10" : "bg-navy/10";
-  const fill = dark ? "bg-white/70" : "bg-navy/70";
-  const label = dark ? "bg-white/20" : "bg-navy/15";
+function FormArt() {
   return (
     <div className="relative w-[160px] space-y-2.5">
       {[0, 1, 2].map((n) => (
         <div key={n} className="flex items-center gap-2">
-          <span className={`h-1.5 w-7 rounded-full ${label}`} />
-          <span className={`relative h-2.5 flex-1 overflow-hidden rounded-full ${track}`}>
-            <span className={`fx-fill absolute inset-0 rounded-full ${fill}`} style={i(n)} />
+          <span className="h-1.5 w-7 rounded-full bg-navy/15" />
+          <span className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-navy/10">
+            <span className="fx-fill absolute inset-0 rounded-full bg-navy/70" style={i(n)} />
           </span>
         </div>
       ))}
@@ -44,15 +41,11 @@ export function FormArt({ dark = false }: { dark?: boolean }) {
 
 /** Participant Tracking: a cohort grid checking in. */
 const CHECKIN_ORDER = [3, 9, 1, 12, 6, 0, 14, 7, 10, 4, 13, 2, 8, 11, 5];
-export function CheckInArt({ dark = false }: { dark?: boolean }) {
+function CheckInArt() {
   return (
     <div className="grid w-[150px] grid-cols-5 gap-2">
       {CHECKIN_ORDER.map((order, n) => (
-        <span
-          key={n}
-          className={`fx-checkin h-5 w-5 rounded-full ${dark ? "bg-white/10" : "bg-navy/[0.08]"}`}
-          style={i(order)}
-        />
+        <span key={n} className="fx-checkin h-5 w-5 rounded-full bg-navy/[0.08]" style={i(order)} />
       ))}
     </div>
   );
@@ -60,7 +53,7 @@ export function CheckInArt({ dark = false }: { dark?: boolean }) {
 
 /** Impact Reports: bars grow, a completion ring draws. */
 const BAR_HEIGHTS = [38, 58, 46, 72, 64, 88, 80];
-export function ReportArt({ dark = false }: { dark?: boolean }) {
+function ReportArt() {
   return (
     <div className="flex items-end gap-5">
       <div className="flex h-[92px] items-end gap-1.5">
@@ -68,11 +61,7 @@ export function ReportArt({ dark = false }: { dark?: boolean }) {
           <span
             key={n}
             className={`fx-grow w-3 rounded-t-sm ${
-              n === BAR_HEIGHTS.length - 2
-                ? "bg-gold"
-                : dark
-                  ? "bg-white/40"
-                  : "bg-gradient-to-t from-navy/70 to-navy/40"
+              n === BAR_HEIGHTS.length - 2 ? "bg-gold" : "bg-gradient-to-t from-navy/70 to-navy/40"
             }`}
             style={{ height: `${String(h)}%`, ...i(n) }}
           />
@@ -84,7 +73,7 @@ export function ReportArt({ dark = false }: { dark?: boolean }) {
           cy="18"
           r="15.9"
           fill="none"
-          stroke={dark ? "white" : "#0f172a"}
+          stroke="#0f172a"
           strokeOpacity={0.1}
           strokeWidth="4"
         />
@@ -107,7 +96,7 @@ export function ReportArt({ dark = false }: { dark?: boolean }) {
 }
 
 /** M&E Surveys: a "post" bar outgrows the "pre" bar. */
-export function PrePostArt() {
+function PrePostArt() {
   return (
     <div className="w-[170px] space-y-3 text-[10px] font-semibold uppercase tracking-widest text-navy/45">
       {[
@@ -128,37 +117,11 @@ export function PrePostArt() {
   );
 }
 
-/** Program Management (How It Works step 1): three program cards fanning out. */
-export function ProgramStackArt() {
-  return (
-    <div className="relative h-[110px] w-[190px]">
-      {[2, 1, 0].map((n) => (
-        <div
-          key={n}
-          className="absolute inset-x-0 top-0 rounded-xl bg-white p-3 shadow-[0_12px_24px_-12px_rgba(0,0,0,0.5)] ring-1 ring-navy/10"
-          style={{
-            transform: `translate(${String(n * 14)}px, ${String(n * 14)}px) rotate(${String(n * -3)}deg)`,
-            opacity: 1 - n * 0.2,
-          }}
-        >
-          <span className="block h-1.5 w-16 rounded-full bg-navy/60" />
-          <span className="mt-2 block h-1.5 w-24 rounded-full bg-navy/15" />
-          <span className="mt-1.5 block h-1.5 w-20 rounded-full bg-navy/15" />
-          <span className="mt-3 flex gap-1">
-            <span className="h-3 w-8 rounded bg-gold/70" />
-            <span className="h-3 w-8 rounded bg-mint/40" />
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 /**
  * Role-Based Access: an org admin fans access out to reviewers and field staff.
  * Roles are the ones the site names (org admins, per-form reviewers, field staff).
  */
-export function RolesArt() {
+function RolesArt() {
   const chip =
     "rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-navy shadow-sm ring-1 ring-navy/10";
   return (
@@ -198,7 +161,7 @@ export function RolesArt() {
 }
 
 /** Art per feature tile. */
-export function TileArt({ icon }: { icon: FeatureIconName }) {
+export function TileArt({ icon }: { icon: FeatureKey }) {
   switch (icon) {
     case "programs":
       return <UnlimitedRibbon />;
