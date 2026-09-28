@@ -86,7 +86,7 @@ export function Testimonials({ index }: { index?: string }) {
 
   return (
     <div ref={ref}>
-      <div className="relative px-5 py-12 text-center sm:py-20 lg:py-24">
+      <div className="relative px-5 py-9 text-center sm:py-16 lg:py-20">
         <DotGrid id="quote-grid" tone="light" fade="radial" />
         <Pill>Testimonials</Pill>
         <p className="mt-3 text-sm text-navy/50">Loved by program managers</p>
