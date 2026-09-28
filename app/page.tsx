@@ -27,6 +27,9 @@ export default function Home() {
             title="Everything you need to run programs."
             lede="From applications to impact reports, Aplikant covers the full program lifecycle."
           />
+          <Link href="/features" className={BTN.small}>
+            All features <span aria-hidden="true">→</span>
+          </Link>
         </Reveal>
         <Features />
       </Section>
