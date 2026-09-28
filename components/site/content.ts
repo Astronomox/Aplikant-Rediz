@@ -25,3 +25,6 @@ export const stats = [
   { value: "500+", label: "Programs managed" },
   { value: "98%", label: "Uptime" },
 ] as const;
+
+export type FeatureKey =
+  "programs" | "applications" | "participants" | "reports" | "surveys" | "access";
