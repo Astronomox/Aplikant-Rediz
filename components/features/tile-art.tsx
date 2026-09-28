@@ -55,3 +55,51 @@ export function CheckInArt({ dark = false }: { dark?: boolean }) {
     </div>
   );
 }
+
+/** Impact Reports: bars grow, a completion ring draws. */
+const BAR_HEIGHTS = [38, 58, 46, 72, 64, 88, 80];
+export function ReportArt({ dark = false }: { dark?: boolean }) {
+  return (
+    <div className="flex items-end gap-5">
+      <div className="flex h-[92px] items-end gap-1.5">
+        {BAR_HEIGHTS.map((h, n) => (
+          <span
+            key={n}
+            className={`fx-grow w-3 rounded-t-sm ${
+              n === BAR_HEIGHTS.length - 2
+                ? "bg-gold"
+                : dark
+                  ? "bg-white/40"
+                  : "bg-gradient-to-t from-navy/70 to-navy/40"
+            }`}
+            style={{ height: `${String(h)}%`, ...i(n) }}
+          />
+        ))}
+      </div>
+      <svg viewBox="0 0 36 36" className="h-16 w-16 -rotate-90">
+        <circle
+          cx="18"
+          cy="18"
+          r="15.9"
+          fill="none"
+          stroke={dark ? "white" : "#0f172a"}
+          strokeOpacity={0.1}
+          strokeWidth="4"
+        />
+        <circle
+          cx="18"
+          cy="18"
+          r="15.9"
+          fill="none"
+          stroke="#10b981"
+          strokeWidth="4"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray="100"
+          strokeDashoffset="28"
+          className="fx-ring"
+        />
+      </svg>
+    </div>
+  );
+}
