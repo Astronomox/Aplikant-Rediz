@@ -350,18 +350,18 @@ export const footer = {
     {
       title: "Product",
       links: [
-        { label: "Features", href: "#features" },
-        { label: "Pricing", href: "#pricing" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Discover Programs", href: "#" },
+        { label: "Features", href: "/features" },
+        { label: "Pricing", href: "/pricing" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Discover Programs", href: "/discover" },
       ],
     },
     {
       title: "Solutions",
       links: [
-        { label: "Application Management", href: "#" },
-        { label: "M&E Platform", href: "#" },
-        { label: "Impact Reporting", href: "#" },
+        { label: "Application Management", href: "/features#applications" },
+        { label: "M&E Platform", href: "/features#surveys" },
+        { label: "Impact Reporting", href: "/features#reports" },
       ],
     },
     {
