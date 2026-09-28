@@ -69,11 +69,11 @@ export function Pill({ children, tone = "light" }: { children: ReactNode; tone?:
  */
 export const TYPE = {
   display:
-    "text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-[3.5rem]",
-  h2: "text-[1.375rem] font-medium leading-[1.2] tracking-[-0.02em] sm:text-3xl lg:text-[2.25rem] lg:leading-[1.15]",
-  h3: "text-[15px] font-semibold leading-snug",
-  lede: "text-sm leading-relaxed sm:text-base",
-  body: "text-sm leading-relaxed",
+    "text-[1.625rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-[2.75rem] lg:text-[3.5rem]",
+  h2: "text-xl font-medium leading-[1.2] tracking-[-0.02em] sm:text-[1.75rem] lg:text-[2.25rem] lg:leading-[1.15]",
+  h3: "text-sm font-semibold leading-snug sm:text-[15px]",
+  lede: "text-[13px] leading-relaxed sm:text-base",
+  body: "text-[13px] leading-relaxed sm:text-sm",
 } as const;
 
 /** Section spacing, phone-first. */
