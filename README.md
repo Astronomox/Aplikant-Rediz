@@ -15,16 +15,16 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Script                 | What it does                                   |
-| ---------------------- | ---------------------------------------------- |
-| `npm run dev`          | Start the dev server                           |
-| `npm run build`        | Production build                               |
-| `npm run start`        | Serve the production build                     |
-| `npm run lint`         | ESLint across the repo, zero warnings allowed  |
-| `npm run lint:fix`     | ESLint with autofix                            |
-| `npm run typecheck`    | `tsc --noEmit`                                 |
-| `npm run format`       | Prettier write                                 |
-| `npm run format:check` | Prettier check                                 |
+| Script                 | What it does                                  |
+| ---------------------- | --------------------------------------------- |
+| `npm run dev`          | Start the dev server                          |
+| `npm run build`        | Production build                              |
+| `npm run start`        | Serve the production build                    |
+| `npm run lint`         | ESLint across the repo, zero warnings allowed |
+| `npm run lint:fix`     | ESLint with autofix                           |
+| `npm run typecheck`    | `tsc --noEmit`                                |
+| `npm run format`       | Prettier write                                |
+| `npm run format:check` | Prettier check                                |
 
 ## Structure
 
