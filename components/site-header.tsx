@@ -204,7 +204,7 @@ function MobileMenu({
               >
                 <span className={active === n.href ? "text-gold" : "text-white"}>{n.label}</span>
                 <ArrowRight className="arrow-nudge h-4 w-4 text-white/40" aria-hidden="true" />
-              </a>
+              </Link>
             </m.li>
           ))}
         </ul>
