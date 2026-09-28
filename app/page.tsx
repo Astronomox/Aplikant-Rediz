@@ -16,14 +16,11 @@ import { Testimonials } from "@/components/site/testimonials";
  */
 export default function Home() {
   return (
-    <main className="overflow-x-clip bg-cream text-navy">
-      <Announcement />
-      <SiteHeader nav={nav} />
-
+    <PageShell>
       <Hero />
 
-      <Section id="features">
-        <Reveal className={`${PAD.x} ${PAD.y}`}>
+      <Section id="features" tone="paper">
+        <Reveal className={`${PAD.x} ${PAD.y} flex flex-wrap items-end justify-between gap-4`}>
           <SectionHead
             eyebrow="Platform"
             title="Everything you need to run programs."
