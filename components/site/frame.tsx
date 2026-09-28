@@ -137,6 +137,7 @@ export function PageHero({
 
 /** Eyebrow + short heading + lede: the head of every section. */
 export function SectionHead({
+  index,
   eyebrow,
   title,
   lede,
