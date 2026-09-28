@@ -81,7 +81,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
                     }`}
                   >
                     {n.label}
-                  </a>
+                  </Link>
                 );
               })}
             </nav>
