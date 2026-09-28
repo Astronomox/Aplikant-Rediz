@@ -18,3 +18,10 @@ export const hero = {
   body: "Aplikant is an AI-powered platform that replaces the need for multiple tools to manage applications, track participants, take attendance, deliver courses and assessments, send emails, and generate impact reports, giving you more time to focus on changing lives.",
   fine: "Free forever · No credit card required · Set up in 5 minutes",
 } as const;
+
+export const stats = [
+  { value: "150+", label: "Organizations" },
+  { value: "12,000+", label: "Participants tracked" },
+  { value: "500+", label: "Programs managed" },
+  { value: "98%", label: "Uptime" },
+] as const;
