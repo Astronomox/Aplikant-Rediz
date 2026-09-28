@@ -57,7 +57,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
       >
         <div className={`${COLUMN} flex h-14 items-center justify-between px-5 sm:h-16 lg:px-8`}>
           <div className="flex items-center gap-8">
-            <a href="#" aria-label="Aplikant home" className="flex h-11 items-center">
+            <Link href="/" aria-label="Aplikant home" className="flex h-11 items-center">
               {/* 2:1 wordmark with built-in padding; negative margin trims it */}
               <Image
                 src="/logo.png"
