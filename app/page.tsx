@@ -11,10 +11,8 @@ import { Scale } from "@/components/site/scale";
 import { Testimonials } from "@/components/site/testimonials";
 
 /*
- * Homepage. Construction after attio.com: one framed column with hairline rails from
- * header to footer, sections separated by full-width hairlines, content in cells.
- * Palette stays Aplikant's (navy, gold, mint, cream). Copy is the live site's; see
- * components/site/content.ts.
+ * Homepage: a numbered sequence of sections (01-06) in alternating tones so each part
+ * reads as its own block. Each section links on to its full page.
  */
 export default function Home() {
   return (
