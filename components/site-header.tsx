@@ -24,9 +24,12 @@ export interface NavItem {
  */
 export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
+  const pathname = usePathname();
+  const active = nav.find((n) => n.href !== "/" && pathname.startsWith(n.href))?.href ?? null;
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuTop, setMenuTop] = useState(56);
   const menuButton = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,29 +42,6 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
     };
   }, []);
 
-  useEffect(() => {
-    const sections = nav
-      .filter((n) => n.href.startsWith("#") && n.href.length > 1)
-      .map((n) => document.getElementById(n.href.slice(1)))
-      .filter((el): el is HTMLElement => el !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          const href = `#${e.target.id}`;
-          if (e.isIntersecting) setActive(href);
-          else setActive((cur) => (cur === href ? null : cur));
-        }
-      },
-      { rootMargin: "-30% 0px -65% 0px" },
-    );
-    sections.forEach((s) => {
-      observer.observe(s);
-    });
-    return () => {
-      observer.disconnect();
-    };
-  }, [nav]);
-
   const closeMenu = useCallback((restoreFocus: boolean) => {
     setMenuOpen(false);
     if (restoreFocus) menuButton.current?.focus();
@@ -70,6 +50,7 @@ export function SiteHeader({ nav }: { nav: readonly NavItem[] }) {
   return (
     <>
       <header
+        ref={headerRef}
         className={`sticky top-0 z-50 border-b border-navy/10 bg-cream/85 backdrop-blur-md transition-shadow duration-300 motion-reduce:transition-none ${
           scrolled || menuOpen ? "shadow-[0_6px_20px_-14px_rgba(15,23,42,0.35)]" : ""
         }`}
