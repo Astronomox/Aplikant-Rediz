@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* framer-motion's useScroll measures targets against <html>; it must not be static. */
+  position: relative;
+}
+
+body {
+  background: #0f172a;
+}
