@@ -30,7 +30,10 @@ const INCLUDED = [
 
 /** true = included, false = not included, string = a specific limit. From the live plan copy. */
 type Cell = boolean | string;
-type Row = { label: string; cells: [Cell, Cell, Cell, Cell] };
+interface Row {
+  label: string;
+  cells: [Cell, Cell, Cell, Cell];
+}
 const TIERS = ["Free", "Growth", "Enterprise", "Custom"] as const;
 const GROUPS: { title: string; rows: Row[] }[] = [
   {
@@ -55,7 +58,10 @@ const GROUPS: { title: string; rows: Row[] }[] = [
         label: "Participant emails / month",
         cells: ["Transactional only", "5,000", "15,000", "Custom volume"],
       },
-      { label: "Email delivery tracking & recipient drill-down", cells: [false, false, true, true] },
+      {
+        label: "Email delivery tracking & recipient drill-down",
+        cells: [false, false, true, true],
+      },
     ],
   },
   {
@@ -63,14 +69,20 @@ const GROUPS: { title: string; rows: Row[] }[] = [
     rows: [
       { label: "AI Powered Reports", cells: [false, "Basic", "Advanced", "Advanced"] },
       { label: "Data export (CSV & PDF)", cells: [false, true, true, true] },
-      { label: "Track filters on Attendance / Email / Certificates", cells: [false, true, true, true] },
+      {
+        label: "Track filters on Attendance / Email / Certificates",
+        cells: [false, true, true, true],
+      },
     ],
   },
   {
     title: "Learning & Engagement",
     rows: [
       { label: "Learning Management System (Courses)", cells: [false, true, true, true] },
-      { label: "Assessments: builder, gradebook, email delivery", cells: [false, true, true, true] },
+      {
+        label: "Assessments: builder, gradebook, email delivery",
+        cells: [false, true, true, true],
+      },
       { label: "Manage Pitch Competitions & Hackathons", cells: [false, true, true, true] },
       { label: "Private judging results + score exports", cells: [false, false, true, true] },
     ],
@@ -88,7 +100,10 @@ const GROUPS: { title: string; rows: Row[] }[] = [
     title: "Admin, Branding & Support",
     rows: [
       { label: "Scoped admin (per-form reviewer invites)", cells: [false, false, true, true] },
-      { label: "Remove Aplikant branding", cells: ["Required", "Required", "Removable", "Removable"] },
+      {
+        label: "Remove Aplikant branding",
+        cells: ["Required", "Required", "Removable", "Removable"],
+      },
       { label: "Support", cells: ["Community", "Standard", "Priority", "Dedicated CSM"] },
     ],
   },
