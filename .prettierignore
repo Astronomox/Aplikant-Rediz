@@ -1,0 +1,8 @@
+node_modules
+.next
+code
+package-lock.json
+REFERENCE.md
+assets
+.review
+screenshots

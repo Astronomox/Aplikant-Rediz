@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* framer-motion's useScroll measures targets against <html>; it must not be static. */
+  position: relative;
+}
+
+body {
+  background: #0f172a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@layer components {
+  /* Gold primary CTA: lifts with a warm shadow on hover, presses in on click. */
+  .btn-gold {
+    @apply bg-gold font-semibold text-navy shadow-sm shadow-gold/0 transition-[transform,box-shadow] duration-200 ease-out;
+    @apply hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gold/30;
+    @apply active:translate-y-0 active:scale-[0.98] active:shadow-sm;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+    @apply motion-reduce:transition-none motion-reduce:hover:translate-y-0;
+  }
+
+  /* Secondary (outlined) buttons share the press state but not the lift. */
+  .btn-press {
+    @apply transition-[transform,background-color] duration-200 ease-out active:scale-[0.98] motion-reduce:transition-none;
+  }
+
+  /* Underline that draws in left to right on hover/focus. */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-300 ease-out content-[''];
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after,
+  .group:hover .link-underline::after,
+  .group:focus-visible .link-underline::after {
+    @apply scale-x-100;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .link-underline::after {
+      @apply transition-none;
+    }
+  }
+
+  /* Arrow that nudges right when its parent `.group` link is hovered. */
+  .arrow-nudge {
+    @apply transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none;
+  }
+}
+
+/* ==========================================================================
+   Desktop motion graphics (fx-*)
+   Every animation below runs only from lg up and only without
+   prefers-reduced-motion. Anything inside [data-fx-play="false"] is paused
+   (set by <PlayWhenVisible> when its region is off screen).
+   ========================================================================== */
+
+[data-fx-play="false"] *,
+[data-fx-play="false"] *::before,
+[data-fx-play="false"] *::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes fx-aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12%, 8%) scale(1.15);
+  }
+}
+@keyframes fx-aurora-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-14%, -6%) scale(0.95);
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .fx-aurora-a {
+    animation: fx-aurora-a 18s ease-in-out infinite;
+  }
+  .fx-aurora-b {
+    animation: fx-aurora-b 22s ease-in-out infinite;
+  }
+}
