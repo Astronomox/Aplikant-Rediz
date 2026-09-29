@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { Check, Minus } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { BTN, PageHero, PAD, Section, SectionHead } from "@/components/site/frame";
@@ -12,31 +13,95 @@ export const metadata: Metadata = {
     "Start free forever. Growth, Enterprise and Custom plans when you are ready to grow.",
 };
 
-/** true = included, false = not included, string = a specific limit. From the plan copy. */
+/** Features every tier gets, listed once above the table instead of as all-check rows. */
+const INCLUDED = [
+  "Unlimited programs",
+  "Unlimited participants",
+  "Application forms (free + paid) with Paystack-paid applications",
+  "Attendance tracking (manual + QR), with QR reopen + regenerate",
+  "Participant IDs (APK-XXXXXX)",
+  "Form templates",
+  "Admin edit for participant + application",
+  "M&E survey data collection",
+  "Role-based access",
+  "Multi-currency billing (NGN & USD via Paystack)",
+  "Data encrypted & securely hosted",
+];
+
+/** true = included, false = not included, string = a specific limit. From the live plan copy. */
 type Cell = boolean | string;
+type Row = { label: string; cells: [Cell, Cell, Cell, Cell] };
 const TIERS = ["Free", "Growth", "Enterprise", "Custom"] as const;
-const ROWS: { label: string; cells: [Cell, Cell, Cell, Cell] }[] = [
-  { label: "Programs & participants", cells: ["Unlimited", "Unlimited", "Unlimited", "Unlimited"] },
-  { label: "Application forms (free + paid)", cells: [true, true, true, true] },
-  { label: "Attendance (manual + QR)", cells: [true, true, true, true] },
-  { label: "M&E surveys", cells: [true, true, true, true] },
-  { label: "Team members", cells: ["1", "Up to 10", "Up to 20", "Unlimited"] },
-  { label: "Certificate templates", cells: ["1", "4", "8", "Unlimited"] },
-  { label: "Participant emails / month", cells: [false, "5,000", "15,000", "Custom"] },
-  { label: "Tracks & sub-programs", cells: [false, true, true, true] },
-  { label: "Courses & assessments", cells: [false, true, true, true] },
-  { label: "Pitch competitions & hackathons", cells: [false, true, true, true] },
+const GROUPS: { title: string; rows: Row[] }[] = [
   {
-    label: "Live & recorded video sessions",
-    cells: [false, "10 per program", "Unlimited", "Unlimited"],
+    title: "Programs & Team",
+    rows: [
+      { label: "Team members", cells: ["1", "10", "20", "Unlimited"] },
+      { label: "Program tracks / sub‑programs", cells: [false, true, true, true] },
+      { label: "Minor participants + guardian check-in", cells: [false, true, true, true] },
+    ],
   },
-  { label: "AI-powered reports", cells: [false, "Basic", "Advanced", "Advanced"] },
-  { label: "Data export (CSV & PDF)", cells: [false, true, true, true] },
-  { label: "Scoped reviewer access", cells: [false, false, true, true] },
-  { label: "Remove Aplikant branding", cells: [false, false, true, true] },
-  { label: "Priority support", cells: [false, false, true, true] },
-  { label: "Dedicated success manager", cells: [false, false, false, true] },
-  { label: "Custom integrations, SSO & SLA", cells: [false, false, false, true] },
+  {
+    title: "Certificates",
+    rows: [
+      { label: "Certificate templates", cells: ["1", "4", "8", "Unlimited"] },
+      { label: "Certificate email campaigns", cells: [false, true, true, true] },
+    ],
+  },
+  {
+    title: "Communications",
+    rows: [
+      {
+        label: "Participant emails / month",
+        cells: ["Transactional only", "5,000", "15,000", "Custom volume"],
+      },
+      { label: "Email delivery tracking & recipient drill-down", cells: [false, false, true, true] },
+    ],
+  },
+  {
+    title: "Reporting & AI",
+    rows: [
+      { label: "AI Powered Reports", cells: [false, "Basic", "Advanced", "Advanced"] },
+      { label: "Data export (CSV & PDF)", cells: [false, true, true, true] },
+      { label: "Track filters on Attendance / Email / Certificates", cells: [false, true, true, true] },
+    ],
+  },
+  {
+    title: "Learning & Engagement",
+    rows: [
+      { label: "Learning Management System (Courses)", cells: [false, true, true, true] },
+      { label: "Assessments: builder, gradebook, email delivery", cells: [false, true, true, true] },
+      { label: "Manage Pitch Competitions & Hackathons", cells: [false, true, true, true] },
+      { label: "Private judging results + score exports", cells: [false, false, true, true] },
+    ],
+  },
+  {
+    title: "Video Sessions",
+    rows: [
+      {
+        label: "Live & recorded video sessions",
+        cells: [false, "10 per program", "Unlimited", "Unlimited"],
+      },
+    ],
+  },
+  {
+    title: "Admin, Branding & Support",
+    rows: [
+      { label: "Scoped admin (per-form reviewer invites)", cells: [false, false, true, true] },
+      { label: "Remove Aplikant branding", cells: ["Required", "Required", "Removable", "Removable"] },
+      { label: "Support", cells: ["Community", "Standard", "Priority", "Dedicated CSM"] },
+    ],
+  },
+  {
+    title: "Custom / Enterprise-scale",
+    rows: [
+      { label: "Custom integrations, SSO & SLA", cells: [false, false, false, true] },
+      {
+        label: "Dedicated onboarding & customer success manager",
+        cells: [false, false, false, true],
+      },
+    ],
+  },
 ];
 
 function Mark({ value }: { value: Cell }) {
@@ -62,11 +127,33 @@ export default function PricingPage() {
       <Section id="compare" tone="paper" className="scroll-mt-16">
         <div className={`${PAD.x} ${PAD.y}`}>
           <Reveal>
-            <SectionHead index="01" eyebrow="Compare plans" title="Every plan, side by side." />
+            <SectionHead
+              index="01"
+              eyebrow="Compare plans"
+              title="Every plan, side by side."
+              lede="See what's included on every plan, and what changes as you grow."
+            />
           </Reveal>
+
+          <Reveal className="mt-6 sm:mt-10">
+            <div className="border border-navy/10 bg-white p-5 sm:p-6">
+              <h3 className="text-[13px] font-semibold uppercase tracking-wide text-navy/50">
+                Included in every plan
+              </h3>
+              <ul className="mt-4 grid gap-x-6 gap-y-2 text-[13px] leading-snug sm:grid-cols-2 sm:text-sm lg:grid-cols-3">
+                {INCLUDED.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-mint" aria-hidden="true" />
+                    <span className="text-navy/75">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+
           {/* The table scrolls sideways inside its own box on narrow screens. */}
           <div className="mt-6 overflow-x-auto sm:mt-10">
-            <table className="w-full min-w-[560px] border-collapse text-left text-xs sm:text-sm">
+            <table className="w-full min-w-[640px] border-collapse text-left text-xs sm:text-sm">
               <thead>
                 <tr className="border-b border-navy/15">
                   <th className="sticky left-0 bg-white py-3 pr-4 font-medium text-navy/50">
@@ -83,20 +170,33 @@ export default function PricingPage() {
                 </tr>
               </thead>
               <tbody>
-                {ROWS.map((r) => (
-                  <tr key={r.label} className="border-b border-navy/10">
-                    <th className="sticky left-0 bg-white py-2.5 pr-4 font-normal text-navy/75">
-                      {r.label}
-                    </th>
-                    {r.cells.map((c, i) => (
-                      <td
-                        key={TIERS[i]}
-                        className={`px-3 py-2.5 text-center ${i === 1 ? "bg-gold/[0.06]" : ""}`}
+                {GROUPS.map((g) => (
+                  <Fragment key={g.title}>
+                    <tr className="border-b border-navy/10 bg-navy/[0.03]">
+                      <th
+                        colSpan={TIERS.length + 1}
+                        scope="colgroup"
+                        className="sticky left-0 py-2 pr-4 text-[11px] font-semibold uppercase tracking-wide text-navy/50"
                       >
-                        <Mark value={c} />
-                      </td>
+                        {g.title}
+                      </th>
+                    </tr>
+                    {g.rows.map((r) => (
+                      <tr key={r.label} className="border-b border-navy/10">
+                        <th className="sticky left-0 bg-white py-2.5 pr-4 font-normal text-navy/75">
+                          {r.label}
+                        </th>
+                        {r.cells.map((c, i) => (
+                          <td
+                            key={TIERS[i]}
+                            className={`px-3 py-2.5 text-center ${i === 1 ? "bg-gold/[0.06]" : ""}`}
+                          >
+                            <Mark value={c} />
+                          </td>
+                        ))}
+                      </tr>
                     ))}
-                  </tr>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
