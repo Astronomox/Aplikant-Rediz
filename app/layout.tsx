@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Aplikant: Run your programs end to end",
+  title: " Aplikant | Program Management & M&E Platform for NGOs",
   description:
     "Aplikant helps you manage applications, track participants, take attendance, and generate impact reports on one platform.",
 };
