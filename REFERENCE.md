@@ -34,3 +34,6 @@ React, Tailwind CSS, shadcn/ui, Radix UI, lucide-react icons, Framer Motion, Goo
 ## Not available
 
 No real dashboard/logged-in screenshots exist — the SPA only saved the shell, no data was captured. Homepage rebuild only; do not invent dashboard UI.
+
+
+///SECRET CACHE https://aplikant.vercel.app////
